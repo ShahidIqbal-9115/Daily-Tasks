@@ -1,0 +1,221 @@
+body{
+    background-color: rgba(239, 225, 225, 0.886);
+}
+.bi-box-arrow-left,
+.bi-caret-down-fill,
+.bi-globe2{
+    color: royalblue;
+}
+#button{
+    background-color: white;
+    border: solid white 1px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+    color: royalblue;
+}
+#button:hover,
+#header-Span1-Inner2:hover,
+.navButton:hover{
+    opacity: .5;
+}
+#header-Span1{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+#header-Span1-Inner{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 20%;
+}
+.heading{
+    display: flex;
+    flex-wrap: nowrap;
+    font-size: 16px;
+    font-weight: bold;
+    color: royalblue;
+    margin-left: 5%;
+}
+#header-Span1-Inner2{
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 2px;
+border: solid white 1px;
+background-color: white;
+border-radius: 4px;
+cursor: pointer;
+}
+#engbutton{
+    border: transparent;
+    color: royalblue;
+}
+#navBar{
+    width: 100%;
+    /* border: solid royalblue 1px; */
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.inline{
+list-style: none;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: space-between;
+padding: 5px;
+background-color: white;
+border-radius: 10px;
+width: 50%;
+}
+.navButton{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: white;
+    border: transparent;
+    color: royalblue;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.active{
+    color: white;
+    background-color: royalblue;
+}
+#buttonEditApplication{
+    color: white;
+    background-color: royalblue;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    border: transparent;
+}
+#header-Span3{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border: transparent;
+    color: royalblue;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+#heading{
+    color: royalblue;
+}
+#header-Span3-Inner1{
+    display: flex;
+    justify-content: space-around;
+    width: 25%;
+    flex-direction: row;
+}
+#button-Discion{
+  padding: 10px;
+    background-color: royalblue;
+    color: white;
+    border: transparent;
+    border-radius: 5px;
+}
+#mainContainer-Span1{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 10px;
+    margin-top: 10px;
+}
+.mainContainer-Span1-Inner{
+    height: 100px;
+    background-color: white;
+    color: royalblue;
+    padding-left: 5%;
+    padding-top: 5%;
+    border-radius: 20px;
+}
+.bi-cash-coin,
+.bi-calendar-day,
+.bi-file-earmark-bar-graph-fill{
+    padding:5px ;
+    border-radius: 15px;
+    border: solid lightgreen 1px;
+    background-color: lightgreen;
+}
+#mainContainer-Span2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    margin-top: 10px;
+}
+.mainContainer-Span2-Inner{
+    padding: 15px;
+    background-color: white;
+    color: royalblue;
+    border-radius: 15px;
+    height: auto;
+}
+.inline-Inline{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+@media (max-width: 	480px){
+   #navBar{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+   }
+   #mainContainer-Span1{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  .mainContainer-Span1-Inner{
+    margin-top: 10px;
+  }
+  #mainContainer-Span2{
+   display: flex;
+   flex-direction: column;
+    column-gap: 10px;
+ }
+ .mainContainer-Span2-Inner{
+    margin-bottom: 10px;
+ }
+ .inline{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ #header-Span3-Inner1{
+    display: flex;
+    width: 100%;
+ }
+}

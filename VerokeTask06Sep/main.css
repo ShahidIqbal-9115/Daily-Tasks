@@ -1,0 +1,135 @@
+#main-Container{
+    display: grid;
+    height: 100%;
+    column-gap: 2rem;
+    grid-template-columns:1fr 4fr;
+    grid-template-areas: "aside section" ;
+    background-color: white;
+}
+#Left-Side-Menu{
+    display: grid;
+    background-color: white;
+}
+.fontStyle{
+    font-size: 16px;
+    font-weight: 400;
+    color: royalblue;
+    text-align: center;
+}
+.list-style{
+    list-style-type: none;
+    display: grid;
+    row-gap: 1rem;
+}
+.outline{
+    border-radius: 4px;
+    border: solid white 1px;
+}
+.TextDecoration{
+    text-decoration: none;
+    color: royalblue;
+    font-size: 16px;
+    font-weight: 500;
+}
+.LogoSize{
+    height: 25px;
+    width: 25px;
+    color: royalblue;
+}
+.bi-person-lines-fill ,
+.bi-file-earmark-person-fill,
+.bi-menu-down{
+    margin-right: 10px;
+}
+/* Right Side Style  */
+#right-Side-Section{
+   display: grid;
+   grid-template-rows: auto auto auto;
+   grid-template-areas: header nav div;
+   background-color: white; 
+   padding-left: 4px;
+   border-left: solid royalblue 1px;
+}
+.header{
+    font-size:36px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    width: 20%;
+}
+.borderBotom{
+    border: transparent;
+    border-bottom: solid royalblue 2px;
+    border-style: double;
+}
+.bi-microsoft-teams{
+   border: solid royalblue 1px;
+   padding: .1%;
+   border-radius: 50%;
+   height: 28px;
+   width: 28px;
+   margin-right: 4px;
+}
+.bi-window-plus,
+.bi-funnel,
+.bi-phone-flip{
+    margin-right: 1px;
+}
+.list-style-Header{
+    display: grid;
+    grid-template-columns:auto auto auto;
+    grid-template-areas: "li li li";
+}
+.inLine{
+  list-style: none;
+}
+.TextDecoration.active{
+    color: white;
+    background-color: royalblue;
+    padding: 8px;
+    border-radius: 4px;
+}
+.TextDecoration:hover{
+    opacity: .5;
+}
+.LogoSize.active{
+    color: white;
+}
+.picSize{
+    height: 100%;
+    width: 100%;
+}
+#right-Side-Section-MainContain{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:span span span;
+    padding: 10px;
+    column-gap: 20px;
+}
+#detail-Box{
+    display: grid;
+    grid-template-rows: .25fr .25fr;
+    grid-template-areas:img span;
+    justify-content: center;
+}
+/* Use Media Querry  */
+@media (max-width: 480px) {
+    body {
+        background-color: lightblue;
+        font-size: 12px;
+    }
+    #main-Container{
+    display: flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+    align-items: center;
+    }
+    .header{
+        width: 100%;
+        align-items: center;
+    }
+    .list-style-Header{
+        width: 100%;
+        padding-left: 0px;
+    }
+}

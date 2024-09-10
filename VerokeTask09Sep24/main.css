@@ -1,10 +1,11 @@
 body{
     background-color: rgba(239, 225, 225, 0.886);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .bi-box-arrow-left,
 .bi-caret-down-fill,
 .bi-globe2{
-    color: royalblue;
+    color: #18535A;
 }
 #button{
     background-color: white;
@@ -57,11 +58,10 @@ cursor: pointer;
 }
 #engbutton{
     border: transparent;
-    color: royalblue;
+    color: #18535A;
 }
 #navBar{
     width: 100%;
-    /* border: solid royalblue 1px; */
     padding: 0;
     display: flex;
     flex-direction: row;
@@ -84,7 +84,7 @@ width: 50%;
     flex-wrap: wrap;
     background-color: white;
     border: transparent;
-    color: royalblue;
+    color: #18535A;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
@@ -94,11 +94,11 @@ width: 50%;
 }
 .active{
     color: white;
-    background-color: royalblue;
+    background-color: #18535A;
 }
 #buttonEditApplication{
     color: white;
-    background-color: royalblue;
+    background-color: #00D1A0;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
@@ -114,28 +114,43 @@ width: 50%;
     align-items: center;
     background-color: white;
     border: transparent;
-    color: royalblue;
+    color: #18535A;
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
 }
-#heading{
-    color: royalblue;
+.heading{
+    color: #18535A;
 }
 #header-Span3-Inner1{
     display: flex;
     justify-content: space-around;
-    width: 25%;
+    width: 28%;
     flex-direction: row;
 }
-#button-Discion{
-  padding: 10px;
-    background-color: royalblue;
+.button-Discion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
     color: white;
     border: transparent;
     border-radius: 5px;
+}
+#button-Discion1{
+    background-color: #E88914;
+}
+#button-Discion2{
+    background-color: #D75C5E;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+#button-Discion3{
+    background-color: #00D1A0;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 #mainContainer-Span1{
     display: grid;
@@ -146,7 +161,6 @@ width: 50%;
 .mainContainer-Span1-Inner{
     height: 100px;
     background-color: white;
-    color: royalblue;
     padding-left: 5%;
     padding-top: 5%;
     border-radius: 20px;
@@ -154,10 +168,20 @@ width: 50%;
 .bi-cash-coin,
 .bi-calendar-day,
 .bi-file-earmark-bar-graph-fill{
-    padding:5px ;
-    border-radius: 15px;
+    padding:10px ;
+    border-radius: 25px;
+    color: #00D1A0;
     border: solid lightgreen 1px;
-    background-color: lightgreen;
+    background-color: rgb(206, 245, 206);
+}
+.lightGry{
+    color: lightslategray;
+    font-size: 12px;
+}
+.LightOrg{
+    color: #D75C5E;
+    text-align: center;
+    padding-left: 15px;
 }
 #mainContainer-Span2{
     display: grid;
@@ -166,9 +190,10 @@ width: 50%;
     margin-top: 10px;
 }
 .mainContainer-Span2-Inner{
+    display: flex;
+    flex-direction: column;
     padding: 15px;
     background-color: white;
-    color: royalblue;
     border-radius: 15px;
     height: auto;
 }
@@ -178,8 +203,15 @@ width: 50%;
     align-items: center;
     text-align: center;
     justify-content: space-between;
+    font-size: 12px;
+    margin-top: 10px;
 }
-
+.C-DarkGreen{
+   color: #18535A;
+}
+.C-LightGreen{
+    color: #00D1A0;
+}
 
 
 
@@ -189,13 +221,20 @@ width: 50%;
 
 @media (max-width: 	480px){
    #navBar{
-    display: flex;
-    flex-direction: column-reverse;
+    display: grid;
+    grid-template-rows:1fr 1fr;
     align-items: center;
    }
-   #mainContainer-Span1{
+   #buttonEditApplicationSpan{
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 100px;
+   }
+   #mainContainer-Span1{
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    column-gap: 10px;
     margin-top: 10px;
   }
   .mainContainer-Span1-Inner{
@@ -213,6 +252,7 @@ width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
  }
  #header-Span3-Inner1{
     display: flex;

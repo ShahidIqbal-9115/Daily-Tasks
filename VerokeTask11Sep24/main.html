@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <link rel="stylesheet" href="./main.css">
+    <title>Document</title>
+</head>
+
+<body>
+    
+
+    <div id="mainContainer">
+        <aside id="rightSide">
+            <span id="rightSide-Img-Span" onclick="ModalShow()">
+                <img src="./Pics/image 160.svg" alt="Pis Loading" id="logoImg" />
+            </span>
+            <nav id="navBar">
+                <span class="navBar-Button">
+                    <img class="navBar-Button-icon" src="./Pics/navIcon/1.svg" alt="Pic Loading" />
+                    <span class="navBar-Button-Text">
+                        Dashboard
+                    </span>
+                </span>
+                <span class="navBar-Button">
+                    <img class="navBar-Button-icon" src="./Pics/navIcon/2.svg" alt="Pic Loading" />
+                    <span class="navBar-Button-Text">
+                        Apprentice
+                    </span>
+                </span>
+                <span class="navBar-Button">
+                    <img class="navBar-Button-icon" src="./Pics/navIcon/3.svg" alt="Pic Loading" />
+                    <span class="navBar-Button-Text">
+                        Log Hours
+                    </span>
+                </span>
+                <span class="navBar-Button">
+                    <img class="navBar-Button-icon" src="./Pics/navIcon/4.svg" alt="Pic Loading" />
+                    <span class="navBar-Button-Text">
+                        Reports
+                    </span>
+                </span>
+                <span class="navBar-Button active">
+                    <img class="navBar-Button-icon" src="./Pics/navIcon/Component 73.svg" alt="Pic Loading" />
+                    <span class="navBar-Button-Text white">
+                        Apprentice Graduation
+                    </span>
+                </span>
+                <span class="navBar-Button">
+                    <img class="navBar-Button-icon" src="./Pics/navIcon/6.svg" alt="Pic Loading" />
+                    <span class="navBar-Button-Text">
+                        Employers
+                    </span>
+                </span>
+                <span class="navBar-Button">
+                    <img class="navBar-Button-icon" src="./Pics/navIcon/7.svg" alt="Pic Loading" />
+                    <span class="navBar-Button-Text">
+                        Profile
+                    </span>
+                </span>
+                <span class="navBar-Button">
+                    <img class="navBar-Button-icon" src="./Pics/navIcon/8.svg" alt="Pic Loading" />
+                    <span class="navBar-Button-Text">
+                        Configurations
+                    </span>
+                </span>
+                <span class="navBar-Button">
+                    <img class="navBar-Button-icon" src="./Pics/navIcon/9.svg" alt="Pic Loading" />
+                    <span class="navBar-Button-Text">
+                        User Management
+                    </span>
+                </span>
+                <button id="closeNavBar" onclick="MenuHide()">
+                    close
+                </button>
+            </nav>
+            <span id="menu" onclick="MenuShow()" >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                </svg>
+            </span>
+
+            <span class="logOut">
+                <span class="logOut-Inner-Span">
+                    <img class="logOut-Button-icon" src="./Pics/navIcon/LogoOutIcon.svg" alt="Pic Loading" />
+                    <span class="logOut-Button-Text">
+                        LogOut
+                    </span>
+                </span>
+            </span>
+        </aside>
+
+        <!-- Modal-Section -->
+        <section id="modal-Section">
+            <span id="modal-Section-Span">
+                <spam  id="ModalCloser" onclick="ModalHide ()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+                  </svg>
+                </spam>
+                <span id="modal-Img">
+                    <img src="./Pics/navIcon/task-square.svg"/>
+                </span>
+                <strong id="modal-Titel">
+                    Certification of Qualification  Exam
+                        <br/>
+                    Status
+                </strong>
+                <span id="modal-Text">
+                    Update C of Q Exam status of the 
+                    <br/>
+                    Apprentice
+                </span>
+                <span id="modal-Radio-Span">
+                    <span id="modal-Radio-SpanInner">
+                        <img src="./Pics/navIcon/radio.svg" alt="Pic Loading" id="Radio">
+                        Pass
+                    </span>
+                    <br/>
+                    <span id="modal-Radio-SpanInner">
+                        <img src="./Pics/navIcon/radio.svg" alt="Pic Loading" id="Radio">
+                        Fail
+                    </span>
+                </span>
+
+                <span id="modal-Time-Span">
+                    <span id="modal-Time-SpanInner">
+                        <span id="modal-Time-SpanInner1">
+                            Date
+                        </span>
+                        <span id="modal-Time-SpanInner2">
+                            <strong>
+                                04/16/2023
+                            </strong>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-day" viewBox="0 0 16 16">
+                                <path d="M4.684 11.523v-2.3h2.261v-.61H4.684V6.801h2.464v-.61H4v5.332zm3.296 0h.676V8.98c0-.554.227-1.007.953-1.007.125 0 .258.004.329.015v-.613a2 2 0 0 0-.254-.02c-.582 0-.891.32-1.012.567h-.02v-.504H7.98zm2.805-5.093c0 .238.192.425.43.425a.428.428 0 1 0 0-.855.426.426 0 0 0-.43.43m.094 5.093h.672V7.418h-.672z"/>
+                                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+                            </svg>
+                        </span>
+                    </span>
+                    <span id="modal-Time-SpanInner">
+                        Percentage
+                        <span id="modal-Time-SpanInner2">
+                            70%
+                        </span>
+                    </span>
+
+                </span>
+
+                <button id="modal-Save-Button">
+                    Save
+                </button>
+
+               
+            </span>
+           
+
+        </section>
+
+        <section id="mainSection">
+            <header id="header">
+                <span id="header-Left">
+                    Apprentice Graduation
+                </span>
+
+                <span id="header-Right">
+                    <img id="Profile-Img" src="./Pics/navIcon/Profile img.png" alt="Pic Loading">
+                    <span id="Profile-Name">
+                        <strong class="Profile-Name-First">Henry</strong>
+                        <span class="Profile-Name-Second">
+                            Super User
+                        </span>
+                    </span>
+                    <img id="DropDownIcon" src="./Pics/navIcon/ProfileDropDown.png" alt="Pic Loading">
+                </span>
+            </header>
+
+            <span id="mainSection-Titel1">
+                <img id="Titel1-Img" src="./Pics/navIcon/Back Arrow.svg" alt="Pic Loading" />
+                Apprentice Graduation Details
+            </span>
+
+            <div id="mainSection-Div">
+                <span id="mainSection-Div-Titel">
+                    Graduation Summary
+                </span>
+                <div id="mainSection-Div-1">
+                    <span id="mainSection-Div-1-Span1">
+                        <span id="mainSection-Div-1-Span1-Span1">
+                            <img src="./Pics/Ellipse 67.png" alt="Pic Loading" id="mainSection-Div-1-Span1-Span1-Img" />
+                            Mr Autmn Philips
+                        </span>
+                        <span id="mainSection-Div-1-Span1-Span2">
+                            <span id="mainSection-Div-1-Span1-Span2-1">
+                                <img id="white-Icon" src="./Pics/navIcon/clock.svg" alt="Pic Loading" />
+                                <span>
+                                    <span class="Text-White-H" >  <strong class="Text-White-Strong">9,000</strong> Hours </span>
+                                    <br/>
+                                    <span class="Text-White-T" >Agreement Hours</span>
+                                </span>
+                            </span>
+                            <span id="mainSection-Div-1-Span1-Span2-2">
+                                <img id="white-Icon" src="./Pics/navIcon/tick-square.svg" alt="Pic Loading"/>
+                                <span>
+                                    <span  class="Text-White-H" >  <strong  class="Text-White-Strong" >160</strong> Hours </span>
+                                    <br/>
+                                    <span  class="Text-White-T" >Supplementary Trainings</span>
+                                </span>
+                            </span>
+                            <span id="mainSection-Div-1-Span1-Span2-3">
+                                <img id="white-Icon" src="./Pics/navIcon/teacher.svg" alt="Pic Loading"/>
+                                <span>
+                                    <strong  class="Text-White-Strong" >Level 3</strong>
+                                    <br/>
+                                    <span class="Text-White-T">Trade School</span>
+                                </span>
+                            </span>
+                            <span id="mainSection-Div-1-Span1-Span2-4">
+                                <img id="white-Icon" src="./Pics/navIcon/setting-2.svg" alt="Pic Loading" />
+                                <span>
+                                    <span class="Text-White-H">  <strong class="Text-White-Strong">800</strong> Hours </span>
+                                    <br/>
+                                    <span class="Text-White-T">Safety Trainings</span>
+                                </span>
+                            </span>
+                        </span>
+                    </span>
+                    <span id="mainSection-Div-1-Span2">
+                        <span id="mainSection-Div-1-Span2Titel">
+                            Verify Apprentice
+                        </span>
+                        <span id="mainSection-Div-1-Span2-List">
+                            <span class="mainSection-Div-1-Span2-List-Inner">
+                                <span class="List-Text">
+                                    Log Hours
+                                </span>
+                                <span class="checkBox-Span">
+                                    <img class="checkBox" src="./Pics/navIcon/CheckBox.svg" alt="CheckBox" />
+                                </span>
+                            </span>
+
+                            <span class="mainSection-Div-1-Span2-List-Inner">
+                                <span class="List-Text">
+                                    STC Hours
+                                </span>
+                                <span class="checkBox-Span">
+                                    <img class="checkBox" src="./Pics/navIcon/CheckBox.svg" alt="CheckBox" />
+                                </span>  
+                            </span>
+
+                            <span class="mainSection-Div-1-Span2-List-Inner">
+                                <span class="List-Text">
+                                    Trade School Level 3
+                                </span>
+                                <span class="checkBox-Span">
+                                    <img class="checkBox" src="./Pics/navIcon/CheckBox.svg" alt="CheckBox" />
+                                </span> 
+                            </span>    
+
+                            <span class="mainSection-Div-1-Span2-List-Inner">
+                                <span class="List-Text">
+                                    Supplementary Trainings
+                                </span>
+                                <span class="checkBox-Span">
+                                    <img class="checkBox" src="./Pics/navIcon/CheckBox.svg" alt="CheckBox" />
+                                </span>
+                             </span>
+
+                            <span class="mainSection-Div-1-Span2-List-Inner">
+                                <span class="List-Text">
+                                    Certification of Qualification Status
+                                </span>
+                                <span class="checkBox-Span">
+                                    <button class="checkBox-Span-Button">
+                                        + Update Status
+                                    </button>
+                                   
+                                </span>
+                            </span>
+                        </span>
+                    </span>
+                    <span id="mainSection-Div-1-Span3">
+                        Graduate to Journey Person
+                    </span>
+                </div>
+            </div>
+        </section>
+
+      
+
+       
+
+    </div>
+
+
+    <script src="./main.js" ></script>
+</body>
+
+</html>

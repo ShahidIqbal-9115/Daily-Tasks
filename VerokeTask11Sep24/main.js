@@ -1,5 +1,4 @@
 
-
 function ModalShow (){
     let modal = document.getElementById("modal-Section");
     if (modal.style.display="none") {
@@ -8,7 +7,6 @@ function ModalShow (){
         modal.style.alignItems="center"
     }
 }
-
 function MenuShow (){
     let togal= document.getElementById("navBar");
     let close = document.getElementById("closeNavBar");
@@ -33,8 +31,4 @@ function ModalHide (){
     if (modal.style.display="block") {
         modal.style.display="none"
     }
-}
-
-function checkBox (){
-    document.getElementsByClassName("checkBox-Span").style.backgroundcolor= "lightblue";
 }

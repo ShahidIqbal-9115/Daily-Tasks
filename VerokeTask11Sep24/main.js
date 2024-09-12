@@ -34,3 +34,7 @@ function ModalHide (){
         modal.style.display="none"
     }
 }
+
+function checkBox (){
+    document.getElementsByClassName("checkBox-Span").style.backgroundcolor= "lightblue";
+}

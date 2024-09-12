@@ -645,6 +645,7 @@ body {
                             justify-content: center;
                             align-items: center;
                             width: 50%;
+                            color: transparent;
 
                             .checkBox {
                                 width: 20px;
@@ -754,7 +755,7 @@ body {
                 position: fixed;
                 align-items: center;
                 z-index: 1;
-                margin-top: 480px;
+                margin-top: 100%;
                 gap: 1px;
                 align-self: center;
                 opacity: 1;

@@ -717,7 +717,7 @@ body {
 
         #rightSide {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             justify-content: space-between;
             align-items: center;
             border-radius: 0%;
@@ -755,7 +755,6 @@ body {
                 position: fixed;
                 align-items: center;
                 z-index: 1;
-                margin-top: 100%;
                 gap: 1px;
                 align-self: center;
                 opacity: 1;

@@ -1,0 +1,352 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    padding-bottom: 10px;
+    font-family: 'Inter';
+}
+
+#logo {
+    height: 25px;
+    width: 180px;
+}
+
+#header {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    align-items: center;
+    background-color: #023B6D;
+    padding-left: .8%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+
+}
+
+.White {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    color: #819db6;
+    cursor: pointer;
+}
+
+.bi-laptop:hover,
+.bi-laptop,
+.bi-tablet:hover,
+.bi-phone:hover {
+    color: white;
+}
+.bi-x-circle-fill{
+    cursor: pointer;
+}
+
+#main-Section-Of-Web {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 7%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    background-color: #37517e;
+}
+
+#main-Section-Of-Web-Head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #37517e;
+    width: 100%;
+    color: white;
+}
+
+#main-Section-Of-Web-Head-Titel {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+#menu {
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#menuNav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+}
+
+#navModal{
+    display: none;
+    flex-direction: column;
+    align-self: center;
+    position: fixed;
+    z-index: 1;
+    align-items: center;
+    justify-content: space-around;
+    width: 450px;
+    height: 400px; 
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.6);
+    background-color: white;
+    margin-top: 5%;
+    margin-left: 33%;
+    border-radius: 25px;
+}
+#modalClose{
+    display: flex;
+    width: 90%;
+    justify-content: flex-end;
+    color: red;
+    cursor: pointer;
+}
+
+
+.NavButton:hover,
+.active {
+    color: #46b2e3;
+    cursor: pointer;
+
+}
+.NavButton{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+.bi-chevron-down{
+    font-weight: bold;
+}
+
+
+#menuButton {
+    background-color: #47b2e4;
+    font-size: 16px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+
+#menuShow {
+    display: none;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+
+#main-Section-Of-Web-Body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #37517e;
+    animation: editApplication 1s;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+#main-Section-Of-Web-Body-Left,
+#main-Section-Of-Web-Body-Right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    width: 100%;
+    color: white;
+}
+
+#heading,
+#Text {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: start;
+    width: 0;
+    font-weight: bolder;
+    font-size: 48px;
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+ 
+}
+
+#main-Section-Of-Web-Body-Left-span {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+}
+
+#Text {
+    color: #c3cbd9;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#BodyImg {
+    height: 100%;
+    width: 75%;
+    animation: img 4s infinite;
+}
+
+#watchNow {
+    background-color: transparent;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: bold;
+    gap: 10px;
+}
+
+#tableDiv{
+    background-color:  #37517e;
+    width: 100%;
+}
+
+#arrayTable{
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   align-items: center;
+   color: white;
+   margin-top: 20px;
+   opacity: 0;
+   transform: translateY(100px);
+   transition: all 2s ease-out;
+}
+#arrayTable.visible{
+    opacity: 1;
+    transform: translateY(0);
+}
+#arrayTable>thead>tr,
+#arrayTable>tbody>tr{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 1px 1px 5px 2px lightblue; 
+    border: solid #023B6D 2px;
+    width: 400px;
+    height: 50px;
+}
+
+#DropdownModalone{
+    display: none;
+    flex-direction: column;
+    justify-content: left;
+    align-self: center;
+    gap: 20px;
+    position: fixed;
+    z-index: 4;
+    align-items: center;
+    text-align: left;
+    width: 15%;
+    overflow: auto;
+    background-color: white;
+    color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 10px;
+    border-radius: 4px;
+    margin-top: 30px;
+    box-shadow: 1px 1px 5px 2px lightblue; 
+}
+
+#DropdownModalDeep{
+    display: none;
+    flex-direction: column;
+    align-self: center;
+    gap: 20px;
+    position: fixed;
+    z-index: 6;
+    align-items: center;
+    justify-content: space-around;
+    overflow: auto;
+    background-color: white;
+    box-shadow: 1px 1px 5px 2px lightblue; 
+    border-radius: 4px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 10px;
+    border-radius: 4px;
+    margin-top: 110px;
+    width: 180px;
+    margin-left: 40px;
+}
+.DropDownButton{
+   color: black;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 100%;
+   cursor: pointer;
+}
+.DropDownButton:hover{
+    color: #46b2e3;
+}
+#addDataToTable{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.inputFeilds{
+   height: 25px;
+   width: 120px;
+   text-align: center;
+}
+
+
+@keyframes typing {
+    from{width: 0;}
+    to{
+        width: 100%;
+    }
+}
+
+@keyframes editApplication {
+    0% {
+        height: 110%;
+        width: 110%;
+    }  
+
+    100% {
+        height: 100%;
+        width: 100%;
+    }
+
+}
+@keyframes img {
+    0% {
+        transform: translateY(0); /* Initial position */
+    }
+    50% {
+        transform: translateY(-50px); /* Moves up by 100px */
+    }
+  
+    100%{
+        transform: translateY(0);
+    }
+}

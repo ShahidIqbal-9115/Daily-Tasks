@@ -6,8 +6,12 @@ function ScreenSizeLapTop (){
 }
 
 function ScreenSizeTab (){
+    document.getElementById("forScrool").style.maxHeight="520px";
+    document.getElementById("forScrool").style.overflow="scroll";
+    document.getElementById("forScrool").style.overflowX="hidden";
     let lap =document.getElementById("main-Section-Of-Web-Head");
     lap.style.width="720px";
+
     document.getElementById("main-Section-Of-Web-Body").style.width="720px";
     document.getElementById("main-Section-Of-Web").style.backgroundColor="#252525";
     document.getElementById("menuNav").style.display="none";
@@ -23,9 +27,13 @@ function ScreenSizeTab (){
     document.querySelector(".bi-tablet").style.color="white";
     document.querySelector(".bi-phone").style.color="#819db6";
     document.querySelector(".bi-laptop").style.color="#819db6";
+    document.body.style.overflow="hidden";
 }
 
 function ScreenSizeMobile (){
+    document.getElementById("forScrool").style.maxHeight="520px";
+    document.getElementById("forScrool").style.overflow="scroll";
+    document.getElementById("forScrool").style.overflowX="hidden";
     let lap =document.getElementById("main-Section-Of-Web-Head");
     lap.style.width="480px";
     document.getElementById("main-Section-Of-Web-Body").style.width="480px";
@@ -43,6 +51,7 @@ function ScreenSizeMobile (){
     document.querySelector(".bi-tablet").style.color="#819db6";
     document.querySelector(".bi-laptop").style.color="#819db6";
     document.querySelector(".bi-phone").style.color="white";
+    document.body.style.overflow="hidden";
 }
 
 function NavModal(){
@@ -97,11 +106,18 @@ function isInViewport(element) {
     return rect.top <= window.innerHeight && rect.bottom >= 0;
 }
 
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll',
+    function() {
     if (isInViewport(animatedElement)) {
         animatedElement.classList.add('visible');
     }
 });
+
+function scre() {
+    if (isInViewport(animatedElement)) {
+        animatedElement.classList.add('visible');
+    }
+}
 
 
 function addRow() {

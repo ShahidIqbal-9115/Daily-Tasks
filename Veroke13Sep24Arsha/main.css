@@ -2,7 +2,8 @@ body {
     margin: 0px;
     padding: 0px;
     padding-bottom: 10px;
-    font-family: 'Inter';
+    font-family: 'Inter';    
+    height: 100vh;  
 }
 
 #logo {
@@ -19,7 +20,6 @@ body {
     padding-left: .8%;
     padding-top: 4px;
     padding-bottom: 4px;
-
 }
 
 .White {
@@ -124,7 +124,6 @@ body {
     font-weight: bold;
 }
 
-
 #menuButton {
     background-color: #47b2e4;
     font-size: 16px;
@@ -136,14 +135,12 @@ body {
     cursor: pointer;
 }
 
-
 #menuShow {
     display: none;
     font-weight: bold;
     cursor: pointer;
 
 }
-
 
 #main-Section-Of-Web-Body {
     display: flex;

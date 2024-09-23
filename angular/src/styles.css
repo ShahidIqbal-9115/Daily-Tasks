@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.inputFeild{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.Button{
+    background-color: royalblue;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}

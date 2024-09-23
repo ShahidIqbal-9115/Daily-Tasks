@@ -1,0 +1,14 @@
+<main class="main">
+    <p>route-one works!</p>
+    <div class="inputFeild">
+        <input placeholder="Enter Name" id="name">
+        <input placeholder="Enter Rank" id="rank">
+        <button (click)="submit()" class="Button">Submit</button>
+    </div>
+</main>
+
+<div *ngFor="let i of employeeData" class="servicesData">
+  <p><strong>Namr: </strong>{{i.name }}. <strong> Employee Rank:</strong>{{i.rank}} </p>
+</div>
+
+

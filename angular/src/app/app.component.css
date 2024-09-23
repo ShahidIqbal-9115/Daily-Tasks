@@ -1,0 +1,19 @@
+.mainDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;flex-direction: column;
+}
+.nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+}
+.link{
+    text-decoration: none;
+}
+.active{
+    font-weight: bold;
+    color: royalblue;
+}

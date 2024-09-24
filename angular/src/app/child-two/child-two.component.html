@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="mainCard">
     <h1>Compnent Two</h1>
     <p>Enter Data to send Parent</p>
@@ -7,4 +7,14 @@
     <input placeholder="Enter Heading" [(ngModel)]="heading" class="input">
     <input placeholder="Enter Text" [(ngModel)]="text" class="input">
     <button class="submit" type="submit" (click)="onButtonClick()">Send To Parent</button>
-</div>
+</div> -->
+
+<app-card  (buttonClick)="onActivate($event)" [getData]="sendData"></app-card>
+
+
+<span class="outPut">
+    <strong>Data From Cards</strong>
+    <div *ngFor="let item of outputMessage">
+      <p><strong>The Heading is: </strong>{{ item.heading}} <strong> <br />The Text is: </strong>{{item.text}}</p>
+    </div>
+</span>

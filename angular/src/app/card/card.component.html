@@ -1,0 +1,11 @@
+<!-- <p>card works!</p> -->
+<div class="mainCard">
+    <h1>{{getData.heading }}</h1>
+    <p>{{getData.text}} </p>
+    <small>Heading is: {{ heading }}</small>
+    <small>Text is: {{ text }}</small>
+    <input placeholder="Enter Heading" [(ngModel)]="heading" class="input">
+    <input placeholder="Enter Text" [(ngModel)]="text" class="input">
+    <button class="submit" type="submit" (click)="onButtonClick()">Send To Parent</button>
+</div> 
+

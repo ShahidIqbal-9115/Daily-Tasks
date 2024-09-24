@@ -18,22 +18,22 @@ import { RouteThreeComponent } from './route-three/route-three.component';
 })
 export class AppComponent {
 
-  outputMessage:any =[];
+  // outputMessage:any =[];
   
-  onActivate(data: any) {
-    if (data.buttonClick) {
-      data.buttonClick.subscribe((message: any) => {
-        this.outputMessage.push(message);
-        console.log(this.outputMessage);
-      });
-    }
-  }
+  // onActivate(data: any) {
+  //   if (data.buttonClick) {
+  //     data.buttonClick.subscribe((message: any) => {
+  //       this.outputMessage.push(message);
+  //       console.log(this.outputMessage);
+  //     });
+  //   }
+  // }
 
   data:any=[];
 
   updateData(item:any){
-      console.log(item);
-      this.data.push(item);
+    console.log(item);
+    this.data.push(item);
   }
-
+   title:string=""
 }

@@ -18,7 +18,6 @@ export class ChildOneComponent {
   outputMessage: any = [];
 
   onButtonClick() {
-
     if (this.heading=='' && this.text=='') {
       alert("fill the form");
     }
@@ -27,7 +26,6 @@ export class ChildOneComponent {
       this.buttonClick.emit(this.outputMessage);
       this.heading='';
       this.text='';
-
     }
   }
 }

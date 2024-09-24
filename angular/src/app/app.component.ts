@@ -22,7 +22,7 @@ export class AppComponent {
   
   onActivate(data: any) {
     if (data.buttonClick) {
-      data.buttonClick.subscribe((message: string) => {
+      data.buttonClick.subscribe((message: any) => {
         this.outputMessage.push(message);
         console.log(this.outputMessage);
       });

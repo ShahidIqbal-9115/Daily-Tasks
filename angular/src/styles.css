@@ -21,6 +21,7 @@
     border-radius: 10px;
     border: none;
     cursor: pointer;
+    box-shadow: 1px 1px 5px 2px rgb(8, 8, 8,.4); 
 }
 .mainCard{
     display: flex;
@@ -38,6 +39,17 @@
     margin-left: 25%;
     color: royalblue;
 }
-.outPut{
+.outPut,.mainDiv{
     color: royalblue;
+}
+.input{
+    border: solid royalblue 1px;
+    color: royalblue;
+    border-radius: 4px;
+    height: 25px;
+    width: 250px;
+}
+.input:focus{
+    border: transparent;
+    outline: none;
 }

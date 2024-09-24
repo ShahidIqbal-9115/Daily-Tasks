@@ -11,13 +11,25 @@
     <h3>MSI</h3>
   </header>
   <nav class="nav">
-    <a routerLink="/RouteOne" routerLinkActive="active" class="link">Route One</a>
-    <a routerLink="/RouteTwo" routerLinkActive="active" class="link">Route Two</a>
-    <a routerLink="/RouteThree" routerLinkActive="active" class="link">Route Three</a> 
+    <a routerLink="/ChildOne" routerLinkActive="active" class="link">Child One</a>
+    <a routerLink="/ChildTwo" routerLinkActive="active" class="link">Child Two</a>
+    <a routerLink="/ChildThree" routerLinkActive="active" class="link">Child Three</a>
   </nav>
-  
 
 </div>
+<!-- {{data }} -->
+<!-- <div *ngFor="let i of data">
+  <p><strong>Heading:</strong>{{i.Heading}} <strong>Text:</strong>{{i.text}} </p>
+</div> -->
 
 
-<router-outlet />
+<!-- <p> {{ outputMessage | json}}</p> -->
+<router-outlet (activate)="onActivate($event)" />
+
+
+<span class="outPut">
+  <strong>Data From Childs</strong>
+  <div *ngFor="let item of outputMessage">
+    <p><strong>The Heading is: </strong>{{ item.heading}} <strong> <br />The Text is: </strong>{{item.text}}</p>
+  </div>
+</span>

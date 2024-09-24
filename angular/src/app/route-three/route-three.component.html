@@ -1,8 +1,8 @@
 <main class="main">
     <p>route-three works!</p>
     <div  class="inputFeild"> 
-        <input placeholder="Enter Name" id="name">
-        <input placeholder="Enter Rank" id="rank">
+        <input placeholder="Enter Name" [(ngModel)]="name" id="name">
+        <input placeholder="Enter Rank" [(ngModel)]="rank" id="rank">
         <button (click)="submit()" class="Button">Submit</button>
     </div>
 </main>
@@ -10,3 +10,13 @@
 <div *ngFor="let i of employeeData" class="servicesData">
     <p><strong>Namr: </strong>{{i.name }}. <strong> Employee Rank:</strong>{{i.rank}} </p>
 </div>
+
+<!-- <form class="mainCard"  [formGroup]="registerationForm" (ngSubmit)="onSubmit()">
+
+    <h1>Compnent Three</h1>
+    <p>Enter Data to send Parent</p>
+    <input placeholder="Enter Heading" formControlName="Heading" class="input">
+    <input placeholder="Enter Text" formControlName="text" class="input">
+    <button class="submit" type="submit" >Send To Parent</button>
+
+</form> -->

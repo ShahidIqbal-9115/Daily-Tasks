@@ -8,7 +8,7 @@ export class ServicesService {
  
   private data:any[]=[
     {"name":'Shahid',"rank":'Intern Developer'},
-    {"name":'Bahadur',"rank":'Intern Developer'}
+    {"name":'bhadur',"rank":'Intern Developer'}
   ];
 
     private dataSource = new BehaviorSubject<any[]>(this.data); 
@@ -18,9 +18,9 @@ export class ServicesService {
 
   setData(newData: any) {
     this.data.push(newData);
-    this.dataSource.next(newData); 
+    this.dataSource.next(this.data); 
   }
-
+  
   getData():any{
     return this.data
   }

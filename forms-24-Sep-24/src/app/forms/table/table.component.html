@@ -1,0 +1,21 @@
+
+<table border="2">
+    <thead>
+        <tr>
+            <th *ngFor="let header of dataForHeading">{{ header.lable}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of getData;">  
+            <td *ngFor="let c of dataForHeading">
+                @if(c.key!='actions'){
+                    {{row[c.key]}}
+                }@else {
+                    @for (c of actions; track $index) {  
+                        <button (click)="call(row.id,actions[$index])"> {{c}}</button>
+                    }
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>

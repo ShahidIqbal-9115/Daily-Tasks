@@ -1,0 +1,20 @@
+<main class="mainForm">
+    <form [formGroup]="registerationForm" class="Form" (ngSubmit)="onSubmit()">
+        <input formControlName="name" type="name" placeholder="Enter Name" />
+        <input formControlName="email" type="email" placeholder="Enter Email" />
+        <input formControlName="phone" type="number" placeholder="Enter Phone No" />
+        <input formControlName="address" type="text" placeholder="Enter Address" />
+        <input formControlName="education" type="text" placeholder="Enter Education" />
+        <button  type="submit" class="button" *ngIf="disAble" >Submit</button>
+        <button class="button" *ngIf="updateButton" (click)="update()"> update</button>
+        <button class="button" *ngIf="clearButton" (click)="clear()"> Clear</button>
+    </form>
+</main>
+<!-- <button (click)="Patch()">Patch</button> -->
+<!-- <div> 
+    <h1>Data To Patch</h1>
+    <p>{{eitdToData|json}}</p>
+</div> -->
+
+<!-- <table-custom [headers]="cols" [data]="data" (output)="someFunction($event)"></table-custom> -->
+

@@ -1,0 +1,20 @@
+.table{
+    border: 2;
+}
+.nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.link{
+    text-decoration: none;
+
+}
+.active{
+    font-weight: bold;
+    color: royalblue;
+}
+.stockTable{
+    display: flex;
+    justify-content: flex-end;
+}

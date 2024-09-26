@@ -1,0 +1,5 @@
+
+<app-new-user (buttonClick)="handelGetData($event)"  [eitdToData]="dataToEdit" ></app-new-user>
+
+
+<app-table (toSent)="handelDataToEdit($event)" [getData]="outputMessage" [dataForHeading]="resueableFormData" [actions]="actions"></app-table>

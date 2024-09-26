@@ -19,7 +19,6 @@ export class CardComponent {
 
   onButtonClick() {
     if (this.heading=='' && this.text=='') {
-
       alert("fill the form");
     }
     else{
@@ -27,7 +26,6 @@ export class CardComponent {
       this.buttonClick.emit(this.outputMessage);
       this.heading='';
       this.text='';
-
     }
   }
 

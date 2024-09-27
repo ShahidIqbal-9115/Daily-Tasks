@@ -8,6 +8,7 @@
     <tbody>
         <tr *ngFor="let row of getData;">  
             <td *ngFor="let c of dataForHeading">
+
                 @if(c.key!='actions'){
                     {{row[c.key]}}
                 }@else {

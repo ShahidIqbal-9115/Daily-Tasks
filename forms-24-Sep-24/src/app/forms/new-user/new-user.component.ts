@@ -16,7 +16,7 @@ export class NewUserComponent {
   @Output() buttonClick = new EventEmitter<any>();
 
   id: number = 1;
-
+ 
   registerationForm = new FormGroup({
     id: new FormControl(),
     name: new FormControl('', [Validators.required]),
@@ -34,6 +34,7 @@ export class NewUserComponent {
       this.id = this.id + 1;
       this.buttonClick.emit(this.registerationForm.value);
       this.registerationForm.reset();
+      
     }
   }
 

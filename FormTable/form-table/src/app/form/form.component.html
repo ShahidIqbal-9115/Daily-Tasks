@@ -1,0 +1,14 @@
+<h1>Enter Details</h1>
+
+<main class="mainForm">
+    <form [formGroup]="registerationForm" class="Form" (ngSubmit)="onSubmit()">
+        <input formControlName="name" type="name" placeholder="Enter Name" />
+        <input formControlName="email" type="email" placeholder="Enter Email" />
+        <input formControlName="phone" type="number" placeholder="Enter Phone No" />
+        <input formControlName="address" type="text" placeholder="Enter Address" />
+        <button type="submit" class="button" *ngIf="disAble" >Submit</button>
+        <button class="button" *ngIf="updateButton" (click)="update()"> update</button>
+        <button class="button" *ngIf="clearButton" (click)="clear()"> Clear</button>
+    </form>
+</main>
+<a routerLink="" routerLinkActive="active" class="link"></a>

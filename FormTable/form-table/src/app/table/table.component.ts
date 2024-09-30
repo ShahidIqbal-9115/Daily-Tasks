@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { ServiceForLocalService } from '../service-for-local.service';
 
+
 @Component({
   selector: 'app-table',
   standalone: true,
@@ -14,11 +15,22 @@ export class TableComponent {
 
   DataFromLoacalStore: any;
   constructor(private togetDataFormStore: ServiceForLocalService) {
-    this.DataFromLoacalStore = this.togetDataFormStore.get('local');
+    this.togetDataFormStore.getDataFromApi().subscribe(
+      (response) => {
+        this.DataFromLoacalStore =response;
+        // console.log('Data received from API:', response);
+      },
+      (error) => {
+        console.error('Error fetching data:', error);
+      },
+  )
+    // this.DataFromLoacalStore = this.togetDataFormStore.get('local');
   }
+ 
 
-
-  TableHeading: any[] = [{ key: 'id', lable: 'ID' }, { key: 'name', lable: 'Name' }, { key: 'email', lable: 'Email' }, { key: 'phone', lable: 'Phone' }, { key: 'address', lable: 'Address' }, { key: 'actions', lable: 'Actions' }];
+  TableHeading: any[] = [{ key: 'id', lable: 'ID' }, { key: 'name', lable: 'Name' }, { key: 'email', lable: 'Email' }, { key: 'phone', lable: 'Phone' }, { key: 'city', lable: 'City' },{ key: 'street', lable: 'Street' },
+     { key: 'actions', lable: 'Actions' }
+    ];
 
   actions: any[] = ['View', 'Edit', 'Delete']
 
@@ -44,7 +56,6 @@ export class TableComponent {
 
   call(id: any, lable: any) {
     if (lable == "View") {
-      alert('Value Patched Click ADD Button');
       const objToView = this.DataFromLoacalStore.find((obj: any) => obj.id === id);
       this.togetDataFormStore.storeDataForPatch(objToView,lable);
     }
@@ -52,11 +63,9 @@ export class TableComponent {
       this.Delete(id);
     }
     if (lable == "Edit") {
-      alert('Value Patched Click ADD Button');
       const objToView = this.DataFromLoacalStore.find((obj: any) => obj.id === id);
       this.togetDataFormStore.storeDataForPatch(objToView,lable);
-    }
-   
+    } 
   }
 
   remove() {

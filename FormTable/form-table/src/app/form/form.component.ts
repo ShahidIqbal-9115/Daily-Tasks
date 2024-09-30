@@ -14,9 +14,8 @@ import { ServiceForLocalService } from '../service-for-local.service';
 })
 export class FormComponent {
 
-  constructor(private DataFormStore: ServiceForLocalService , private router: Router) { }
-
-  id: number = 1;
+  constructor(private DataFormStore: ServiceForLocalService, private router: Router) { }
+  
   localstore: any = [];
   disAble: boolean = true;
   updateButton: boolean = false;
@@ -43,7 +42,9 @@ export class FormComponent {
         this.registerationForm.value.id = dataFromLocal.length + 1;
         dataFromLocal.push(this.registerationForm.value);
         this.DataFormStore.set('local', dataFromLocal);
-        this.router.navigate(['']);
+        if (!confirm("Do You Want to Add Multipules Records")) {
+          this.router.navigate(['']);
+        }
       }
       this.registerationForm.reset();
     }
@@ -60,15 +61,19 @@ export class FormComponent {
     });
     this.DataFormStore.set('local', dataFromLocal);
     this.registerationForm.reset();
+    this.DataFormStore.storeDataForPatch(this.registerationForm.value,this.registerationForm.value.id);
     this.updateButton = false;
     this.disAble = true;
     this.clearButton = false;
+    this.router.navigate(['']);
   }
 
   clear() {
     this.registerationForm.reset();
+    this.DataFormStore.storeDataForPatch(this.registerationForm.value,this.registerationForm.value.id);
     this.disAble = true;
     this.clearButton = false;
+    this.router.navigate(['']);
   }
 
   patch() {
@@ -96,5 +101,6 @@ export class FormComponent {
     this.clearButton = false;
     this.patch();
   }
+
 
 }

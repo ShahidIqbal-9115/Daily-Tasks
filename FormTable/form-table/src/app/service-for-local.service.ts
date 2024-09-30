@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceForLocalService {
+  private apiUrl = 'https://jsonplaceholder.typicode.com/users'; 
+
   private storedData: any;
   private actionLable:any;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  getDataFromApi(): Observable<any> {
+    return this.http.get<any>(this.apiUrl);
+  }
 
   set(key: string, value: any): void {
     localStorage.setItem(key, JSON.stringify(value));

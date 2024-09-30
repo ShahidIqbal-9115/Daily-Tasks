@@ -1,7 +1,4 @@
-
-<a routerLink="forms" routerLinkActive="active" class="link"><button>ADD Detail</button></a>
-
-<button (click)="remove()">Delete Record</button>
+<a routerLink="forms" routerLinkActive="active" class="link"><button class="button">ADD Detail</button></a>
 
 
 <table border="2">
@@ -11,18 +8,24 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let row of DataFromLoacalStore;">  
-            <td *ngFor="let c of TableHeading">   
+        <tr *ngFor="let row of DataFromLoacalStore;">
+            <td *ngFor="let c of TableHeading">
+
                 @if(c.key!='actions'){
-                    {{row[c.key]}}
-                }@else {
-                    @for (c of actions; track $index) {  
-                        <button [routerLink]="RouterLink(actions[$index])" (click)="call(row.id,actions[$index])"> 
-                            {{c}}
-                        </button>
+                    @if(c.key=='street' || c.key=='city'){
+                        {{row.address[c.key]}}
                     }
+                {{row[c.key]}}
+                }@else {
+                @for (c of actions; track $index) {
+                <button [routerLink]="RouterLink(actions[$index])" (click)="call(row.id,actions[$index])">
+                    {{c}}
+                </button>
+                }
                 }
             </td>
         </tr>
     </tbody>
 </table>
+
+<button class="button" (click)="remove()">Delete Record</button>

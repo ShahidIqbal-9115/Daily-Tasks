@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "form-table": {
+    "Angular-With-Metrial-UI": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/form-table",
+            "outputPath": "dist/angular-with-metrial-ui",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -27,7 +27,6 @@
               }
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -60,10 +59,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "form-table:build:production"
+              "buildTarget": "Angular-With-Metrial-UI:build:production"
             },
             "development": {
-              "buildTarget": "form-table:build:development"
+              "buildTarget": "Angular-With-Metrial-UI:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +85,6 @@
               }
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -96,6 +94,6 @@
     }
   },
   "cli": {
-    "analytics": "f25ec6c4-2490-4d68-945e-983382eb759b"
+    "analytics": "36bd63a8-40a4-429a-b3c0-da60d6ad4852"
   }
 }

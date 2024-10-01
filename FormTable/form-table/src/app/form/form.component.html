@@ -1,16 +1,33 @@
 <main class="mainForm">
     <h1>Enter Details</h1>
     <form [formGroup]="registerationForm" class="Form" (ngSubmit)="onSubmit()">
-        <input formControlName="name" type="name" placeholder="Enter Name" />
-        <input formControlName="email" type="email" placeholder="Enter Email" />
-        <input formControlName="phone" type="number" placeholder="Enter Phone No" />
-        <input formControlName="address" type="text" placeholder="Enter Address" />
-        <button type="submit" class="button" *ngIf="disAble">Submit</button>
-        <button class="button" *ngIf="updateButton" (click)="update()"> update</button>
-        <button class="button" *ngIf="clearButton" (click)="clear()"> Clear</button>
+        <mat-form-field appearance="outline">
+            <mat-label>Enter Your Name</mat-label>
+            <input matInput formControlName="name" type="name" placeholder="Enter Name">
+        </mat-form-field>
+      
+        <mat-form-field appearance="outline">
+            <mat-label>Enter Your Email</mat-label>
+            <input matInput formControlName="email" type="email" placeholder="Enter Email" >
+        </mat-form-field>
+      
+        <mat-form-field appearance="outline">
+            <mat-label>Enter Phone No</mat-label>
+            <input matInput formControlName="phone" type="number" placeholder="Enter Phone No">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Enter Address</mat-label>
+            <input matInput formControlName="address" type="text" placeholder="Enter Address" >
+        </mat-form-field>
+     
+    
+        <button type="submit" mat-flat-button *ngIf="disAble">Submit</button>
+        <button mat-flat-button *ngIf="updateButton" (click)="update()"> update</button>
+        <button mat-flat-button *ngIf="clearButton" (click)="clear()"> Clear</button>
     </form>
     <a routerLink="" routerLinkActive="active" class="link">
-        <button class="button">
+        <button mat-flat-button>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -21,5 +38,6 @@
             Go Back
         </button> 
     </a>
+    
 
 </main>

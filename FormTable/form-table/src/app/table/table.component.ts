@@ -2,12 +2,15 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { ServiceForLocalService } from '../service-for-local.service';
-
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [MatTableModule,MatButtonModule, MatDividerModule, MatIconModule,CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
 })
@@ -15,20 +18,21 @@ export class TableComponent {
 
   DataFromLoacalStore: any;
   constructor(private togetDataFormStore: ServiceForLocalService) {
-    this.togetDataFormStore.getDataFromApi().subscribe(
-      (response) => {
-        this.DataFromLoacalStore =response;
-        // console.log('Data received from API:', response);
-      },
-      (error) => {
-        console.error('Error fetching data:', error);
-      },
-  )
-    // this.DataFromLoacalStore = this.togetDataFormStore.get('local');
+   // this.togetDataFormStore.getDataFromApi().subscribe(
+  //     (response) => {
+  //       this.DataFromLoacalStore =response;
+  //       // console.log('Data received from API:', response);
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching data:', error);
+  //     },
+  // )
+    this.DataFromLoacalStore = this.togetDataFormStore.get('local');
   }
  
 
-  TableHeading: any[] = [{ key: 'id', lable: 'ID' }, { key: 'name', lable: 'Name' }, { key: 'email', lable: 'Email' }, { key: 'phone', lable: 'Phone' }, { key: 'city', lable: 'City' },{ key: 'street', lable: 'Street' },
+  TableHeading: any[] = [{ key: 'id', lable: 'ID' }, { key: 'name', lable: 'Name' }, { key: 'email', lable: 'Email' }, { key: 'phone', lable: 'Phone' }, { key: 'address', lable: 'Address' },
+    // { key: 'street', lable: 'Street' },
      { key: 'actions', lable: 'Actions' }
     ];
 

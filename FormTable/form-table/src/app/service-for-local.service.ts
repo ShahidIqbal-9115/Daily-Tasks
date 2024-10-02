@@ -31,6 +31,7 @@ export class ServiceForLocalService {
     this.actionLable=lable;
   }
 
+
   getData(): any {
     return {data:this.storedData,action:this.actionLable};
   }

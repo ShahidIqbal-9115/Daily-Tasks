@@ -1,29 +1,68 @@
-import { Component} from '@angular/core';
+
+import {ChangeDetectionStrategy, Component, inject, model, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogTitle,
+} from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { ServiceForLocalService } from '../service-for-local.service';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
-import { DialogOverviewExample } from '../dai-log/dai-log.component';
 
+
+
+/**
+ * @title Dialog Overview
+ */
+@Component({
+  selector: 'dialog-overview-example',
+  templateUrl: 'dai-log.component.html',
+  standalone: true,
+  imports: [MatFormFieldModule,ReactiveFormsModule, MatInputModule, FormsModule, MatButtonModule,CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class DialogOverviewExample {
+  readonly dialog = inject(MatDialog);
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
+  } 
+}
 
 @Component({
-  selector: 'app-form',
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: './dailog.html',
   standalone: true,
-  imports: [DialogOverviewExample,FormsModule, MatFormFieldModule, MatInputModule,MatButtonModule, MatDividerModule, MatIconModule,CommonModule, ReactiveFormsModule, RouterOutlet, RouterLink, RouterLinkActive],
-  templateUrl: './form.component.html',
-  styleUrl: './form.component.css'
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatDialogClose,
+  ],
 })
-export class FormComponent {
-
+export class DialogOverviewExampleDialog {
+  readonly dialogRef = inject(MatDialogRef<DialogOverviewExampleDialog>);
   constructor(private DataFormStore: ServiceForLocalService, private router: Router) { }
-  
   localstore: any = [];
   disAble: boolean = true;
   updateButton: boolean = false;
@@ -52,12 +91,12 @@ export class FormComponent {
         this.DataFormStore.set('local', dataFromLocal);
         if (!confirm("Do You Want to Add Multipules Records")) {
           this.router.navigate(['']);
+          window.location.reload();
         }
+        this.dialogRef.close(this.DataFormStore.get('local'));
       }
-      this.registerationForm.reset();
     }
   }
-
 
   update() {
     let dataFromLocal = this.DataFormStore.get('local');
@@ -98,17 +137,15 @@ export class FormComponent {
       this.clearButton = false;
       this.disAble = false;
       this.registerationForm.patchValue(retrievedData.data);
+
     }
 
   }
 
-  ngOnInit() {
-    this.disAble = true;
-    this.updateButton = false;
-    this.clearButton = false;
-    this.patch();
+  
+
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
-
-
 }
-

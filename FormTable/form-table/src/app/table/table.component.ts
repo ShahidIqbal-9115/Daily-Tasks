@@ -6,19 +6,21 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
+import { DialogOverviewExample } from '../dai-log/dai-log.component';
+
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [MatTableModule,MatButtonModule, MatDividerModule, MatIconModule,CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [DialogOverviewExample,MatTableModule,MatButtonModule, MatDividerModule, MatIconModule,CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
 })
-export class TableComponent {
+export class TableComponent { 
 
   DataFromLoacalStore: any;
   constructor(private togetDataFormStore: ServiceForLocalService) {
-   // this.togetDataFormStore.getDataFromApi().subscribe(
+  // this.togetDataFormStore.getDataFromApi().subscribe(
   //     (response) => {
   //       this.DataFromLoacalStore =response;
   //       // console.log('Data received from API:', response);
@@ -29,7 +31,7 @@ export class TableComponent {
   // )
     this.DataFromLoacalStore = this.togetDataFormStore.get('local');
   }
- 
+
 
   TableHeading: any[] = [{ key: 'id', lable: 'ID' }, { key: 'name', lable: 'Name' }, { key: 'email', lable: 'Email' }, { key: 'phone', lable: 'Phone' }, { key: 'address', lable: 'Address' },
     // { key: 'street', lable: 'Street' },
@@ -72,6 +74,7 @@ export class TableComponent {
     } 
   }
 
+
   remove() {
     let userResponse = confirm("Do You Want to Delete All Records");
     if (userResponse) {
@@ -79,4 +82,7 @@ export class TableComponent {
       this.DataFromLoacalStore = this.togetDataFormStore.get('local');
     };
   }
+
+  
 }
+

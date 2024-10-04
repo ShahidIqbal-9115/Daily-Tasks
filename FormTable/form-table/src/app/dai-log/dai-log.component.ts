@@ -18,8 +18,6 @@ import { ServiceForLocalService } from '../service-for-local.service';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
-
-
 /**
  * @title Dialog Overview
  */
@@ -89,11 +87,10 @@ export class DialogOverviewExampleDialog {
         this.registerationForm.value.id = dataFromLocal[dataFromLocal.length-1].id + 1;
         dataFromLocal.push(this.registerationForm.value);
         this.DataFormStore.set('local', dataFromLocal);
-        if (!confirm("Do You Want to Add Multipules Records")) {
-          this.router.navigate(['']);
-          window.location.reload();
-        }
+        window.location.reload();
         this.dialogRef.close(this.DataFormStore.get('local'));
+        this.registerationForm.reset();
+       
       }
     }
   }

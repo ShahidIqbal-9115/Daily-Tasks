@@ -4,6 +4,6 @@ import { TableComponent } from './table/table.component';
 
 
 export const routes: Routes = [
-    {path:"", component:TableComponent},
-    {path:"forms", component:FormComponent},
+    {path:"table", component:TableComponent},
+    {path:"forms/:type/:id", component:FormComponent},
 ];

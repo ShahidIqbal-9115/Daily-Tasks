@@ -30,4 +30,57 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding-left: 10px;
     text-align: center;    
 }
+/* App Component Style  */
+.example-button-container{
+   width: 100%;
+   padding-left: 10px;
+   padding-top: 10px;
+}
+.mainContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.leftSide{
+    width: 15%;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 10px;
+    /* border: solid black 1px; */
+}
+.rightSide{
+    width: 85%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.nav{
+    display: flex;
+    flex-direction: column;
+}
+/* style for table  */
+.DaiLogMain{
+ padding: 50px;
+ box-shadow: 1px 1px 5px 2px lightblue; 
+}
 
+.Save{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    color: royalblue;
+    font-weight: bold;
+}
+.topBar{
+    display: flex;
+    width: 100%;
+    /* border-bottom: solid royalblue 1px; */
+    color: royalblue;
+    padding-left: 10px;
+    box-shadow: 1px 1px 5px 2px royalblue; 
+}

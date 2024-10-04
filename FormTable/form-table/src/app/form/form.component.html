@@ -13,8 +13,13 @@
       
         <mat-form-field appearance="outline">
             <mat-label>Enter Phone No</mat-label>
-            <input matInput formControlName="phone" type="number" placeholder="Enter Phone No">
+            <input matInput formControlName="phone" type="text" placeholder="Enter Phone No">
         </mat-form-field>
+
+        <!-- <mat-form-field appearance="outline">
+            <mat-label>Enter Address</mat-label>
+            <input matInput formControlName="website" type="text" placeholder="Enter Address" >
+        </mat-form-field> -->
 
         <mat-form-field appearance="outline">
             <mat-label>Enter Address</mat-label>
@@ -27,7 +32,7 @@
         <button mat-flat-button *ngIf="clearButton" (click)="clear()"> Clear</button>
     </form>
    
-    <a routerLink="" routerLinkActive="active" class="link">
+    <a routerLink="/table" routerLinkActive="active" class="link">
         <button mat-flat-button class="button"> 
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-box-arrow-left" viewBox="0 0 16 16">
@@ -39,11 +44,12 @@
             Go Back
         </button> 
     </a>
-    
    
 </main>
 
-<!-- <dialog-overview-example></dialog-overview-example> -->
+
+
+
 
 
 

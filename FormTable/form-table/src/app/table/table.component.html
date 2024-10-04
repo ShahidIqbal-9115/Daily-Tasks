@@ -1,16 +1,21 @@
 <main class="mainForm ">
-    <dialog-overview-example></dialog-overview-example>
-    <!-- <a routerLink="forms" routerLinkActive="active" class="link"><button mat-flat-button class="button">ADD
-            Detail</button></a> -->
+   
+    <!-- <button mat-raised-button (click)="openDialog()">ADD Detail</button> -->
+    <!-- <a routerLink="" routerLinkActive="active" class="link">
+        <button mat-flat-button class="button">Go Back</button>
+    </a> -->
 
-    <table mat-header-cell class="mat-elevation-z8 demo-table">
+    <!-- Error 
+    when try to implement pagination table goes Out 
+    mat-table [dataSource]="dataSource" -->
+    <!-- <table   class="mat-elevation-z8 demo-table"  >        
         <thead>
-            <tr  mat-header-cell>
+            <tr mat-header-cell  >
                 <th class="tableData" *ngFor="let header of TableHeading">{{ header.lable}}</th>
             </tr>
         </thead>
-        <tbody mat-cell>
-            <tr  *ngFor="let row of DataFromLoacalStore;">
+        <tbody>
+            <tr  mat-cell *ngFor="let row of DataFromLoacalStore;">
                 <td class="tableData" *ngFor="let c of TableHeading">
                     @if(c.key!='actions'){
                     @if(c.key=='street' || c.key=='city'){
@@ -19,8 +24,7 @@
                     {{row[c.key]}}
                     }@else {
                     @for (c of actions; track $index) {
-                    <button mat-raised-button 
-                    [routerLink]="RouterLink(actions[$index])"
+                    <button mat-raised-button [routerLink]="RouterLink(actions[$index])"
                         (click)="call(row.id,actions[$index])">
                         {{c}}
                     </button>
@@ -29,14 +33,39 @@
                 </td>
             </tr>
         </tbody>
-
-        <tr mat-header-row ></tr>
+        <tr mat-header-row></tr>
         <tr mat-row></tr>
+    </table> -->
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+        @for(c of TableHeading; track $index){
+            @if(c!='actions'){
+            <ng-container matColumnDef={{c}}>
+                <th mat-header-cell *matHeaderCellDef> {{c| uppercase}} </th>
+                <td mat-cell *matCellDef="let element"> {{element[c]}} </td>
+            </ng-container>
+            }
+            
+            @else {
+                <ng-container matColumnDef='actions'>
+                    <th mat-header-cell *matHeaderCellDef class="actionHead"> {{c| uppercase}} </th>
+                    <td mat-cell *matCellDef="let element"> 
+                    @for(a of actions; track $index){
+                        <button  class="margin-btn" mat-raised-button aria-label="Example icon button with a delete icon" (click)="call(element.id,a.lable)" [routerLink]="RouterLink(a.lable,element.id)" >
+                            {{a.lable}}
+                        </button>     
+                    }
+                    </td>
+                </ng-container>
+            }  
+        }
+        <tr mat-header-row *matHeaderRowDef="TableHeading"></tr>
+        <tr mat-row *matRowDef="let row; columns: TableHeading"></tr>
+
     </table>
 
-
     <button mat-flat-button class="button" (click)="remove()">Delete Record</button>
+    <mat-paginator [length]="DataFromLoacalStore.length" [pageSize]="4" [pageSizeOptions]="[2, 4, 8, 10]" aria-label="Select page">
+    </mat-paginator>
 
 </main>
-
-

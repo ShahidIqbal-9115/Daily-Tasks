@@ -13,8 +13,20 @@ export class ServiceForLocalService {
 
   constructor(private http: HttpClient) { }
 
-  getDataFromApi(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+  // getDataFromApi(): Observable<any> {
+  //   return this.http.get<any>(this.apiUrl);
+  // }
+
+  postdataDataToApi(data:any): Observable<any> {
+    return this.http.post<any>(`https://jsonplaceholder.typicode.com/posts`,data);
+  }
+
+  updataDataToApi(data:any,id:any): Observable<any> {
+    return this.http.put<any>(`https://jsonplaceholder.typicode.com/posts/${id}`,data);
+  }
+
+  deleteDataFromApi(id:any): Observable<any>{
+    return this.http.delete<any>(`'https://jsonplaceholder.typicode.com/posts/${id}`);
   }
 
   set(key: string, value: any): void {
@@ -39,4 +51,12 @@ export class ServiceForLocalService {
   remove(key: string): void {
     localStorage.removeItem(key);
   }
+
+
+  respones:boolean=false;
+  responesCall(){
+   return this.respones=true;
+  }
+
+
 }

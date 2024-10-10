@@ -36,8 +36,7 @@ export class HomePageComponent implements OnInit  {
   localstore:any=[];
 
   constructor(private router:Router,private componentFactoryResolver: ComponentFactoryResolver,private services:ServicesService){
-     this.localstore=this.services.get('tolocal'); 
-    //  this.dataSource=this.services.get('tolocal');  
+     this.localstore=this.services.get('tolocal');  
   }
 
   ngOnInit(): void {
@@ -51,22 +50,16 @@ export class HomePageComponent implements OnInit  {
   ]
 
 
-  RendertableAdmin() {
-    
+  RendertableAdmin() {  
     this.dataSource = this.localstore.filter((item:any) => item.role === 'admin'||item.role=='Admin');
-    
-    console.log(this.dataSource);
+  
   }
 
   RendertableUser() {
-    // console.log(this.dataSource);
     this.dataSource = this.localstore.filter((item:any) => item.role === 'user'||item.role=='User');
+  }
 
-    // this.localstore.forEach((item: any) => {
-    //   if (item.role ==='user'||item.role==='User') {
-    //     this.datatoshow.push(item);
-    //   }
-    // });
-    console.log(this.dataSource);
+  LogOut(){
+    this.router.navigate(['']);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { ServiceForLocalService } from '../service-for-local.service';
@@ -32,17 +32,25 @@ import { window } from 'rxjs';
   standalone: true,
   imports: [MatPaginatorModule, DialogOverviewExampleDialog, MatSortModule, MatTableModule, MatButtonModule, MatDividerModule, MatIconModule, CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './table.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './table.component.css'
 })
 export class TableComponent {
 
  public DataFromLoacalStore: any;
-  constructor(private togetDataFormStore: ServiceForLocalService) {
+  constructor(private togetDataFormStore: ServiceForLocalService, private cdref:ChangeDetectorRef) {
     // this.togetDataFormStore.getDataFromApi().subscribe(
     //     (response) => {
     //       this.DataFromLoacalStore =response;
     //       this.dataSource = new MatTableDataSource(this.DataFromLoacalStore);
     //       // console.log('Data received from API:', this.DataFromLoacalStore);
+
+    //       setTimeout(() => {
+    //         this.cdref.detectChanges();
+    //       }, 5000);
+    //       // console.log(response);
+          
+          
     //     },
     //     (error) => {
     //       console.error('Error fetching data:', error);
@@ -58,6 +66,17 @@ export class TableComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit() {
+    this.togetDataFormStore.getDataFromApi().subscribe(
+      (response) => {
+      console.log(response);
+        setTimeout(() => {
+          this.cdref.detectChanges();
+        }, 5000);        
+      },
+      (error) => {
+        console.error('Error fetching data:', error);
+      },
+  )
     this.dataSource = new MatTableDataSource(this.DataFromLoacalStore);
     this.dataSource.paginator = this.paginator;
   }
@@ -137,7 +156,7 @@ export class TableComponent {
 
   readonly dialog = inject(MatDialog);
 
-  // openDialog(): void {
+  //   openDialog(): void {
   //   const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
   //   });
 

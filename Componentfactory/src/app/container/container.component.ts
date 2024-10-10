@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import {  OnInit, ComponentFactoryResolver, ViewContainerRef, ViewChild } from '@angular/core';
 import { ComponentOneComponent } from '../component-one/component-one.component';
-import { ComponentTwoComponent } from '../component-two/component-two.component';
+import { ComponentTwoComponent } from './component-two/component-two.component';
 import { ComponentThreeComponent } from '../component-three/component-three.component';
-
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-container',
@@ -16,19 +16,19 @@ export class ContainerComponent implements OnInit {
 
   @ViewChild('formTemplate', { read: ViewContainerRef }) formRef!: ViewContainerRef;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
+  constructor(private componentFactoryResolver: ComponentFactoryResolver,public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
   RenderComponentOne() {
+    this.dialog.open(ComponentOneComponent);
     this.formRef.clear();
-    const homeComponent = this.componentFactoryResolver.resolveComponentFactory(ComponentOneComponent);
-    const componentRef = this.formRef.createComponent(homeComponent);
-    componentRef.instance.title = 'This is Component One';
+     this.componentFactoryResolver.resolveComponentFactory(ComponentOneComponent);
   }
 
   RenderComponenttwo() {
+    this.dialog.closeAll();
     this.formRef.clear();
     const indexComponent = this.componentFactoryResolver.resolveComponentFactory(ComponentTwoComponent);
     const componentRef = this.formRef.createComponent(indexComponent);
@@ -36,6 +36,7 @@ export class ContainerComponent implements OnInit {
   }
 
   RenderComponentthree() {
+    this.dialog.closeAll();
     this.formRef.clear();
     const welcomeComponent = this.componentFactoryResolver.resolveComponentFactory(ComponentThreeComponent);
     const componentRef = this.formRef.createComponent(welcomeComponent);

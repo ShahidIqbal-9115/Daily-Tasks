@@ -1,0 +1,22 @@
+<h3>re-useable-card works!<h3 >{{name}}</h3></h3>
+
+<button (click)="startProcess()">use ngZone Method</button>
+
+<main class="main">
+
+<table *ngFor="let icon of table" class="table">
+    <thead>
+        <th>
+            <tr>name</tr>
+        </th>
+    </thead>
+    <tbody>
+        <td>
+            <tr>{{icon.name}}</tr>
+            <br/>
+            <tr>{{icon.email}}</tr>
+        </td>
+        
+    </tbody>
+</table>
+</main>

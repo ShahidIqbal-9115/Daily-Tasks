@@ -1,0 +1,82 @@
+<div class="w-full h-full px-40 py-10 custom-class-main justify-center border-4 align-middle flex ">
+
+    <main  class="mainContainer h-full flex flex-row max-md:flex-col w-full justify-self-center self-center mx-2 my-2 justify-between border-2 rounded shadow-md bg-white rounded-tl-lg rounded-bl-lg custom-class-main-1">
+
+        <div class="LeftSide bGColor rounded-tl-lg custom-class-Ls rounded-bl-lg w-1/3 flex justify-center flex-col ms:hide ">
+            <h1 class="font-bold text-white flex justify-center text-center my-4">
+                Hello, Friend!
+            </h1>
+            <h5 class=" text-white flex justify-center text-center my-4">
+                Enter your personal details <br />
+                and start journey with us
+            </h5>
+            <button type="submit" mat-flat-button routerLink="/sginup"
+                class="text-white font-bold rounded-full border-2 border-white self-center py-2 w-1/3 mx-5 my-5 cursor-pointer bGColor transition-colors">
+                SGIN UP
+            </button>
+
+        </div>
+
+        <form [formGroup]="registerationForm" 
+ class="flex flex-col mr-8 mt-8 h-4/5 w-1/2 justify-between ms:h-full custom-class-Rs"
+            (ngSubmit)="onSubmit()">
+
+            <h3 class="font-bold text-gray-700 flex justify-center text-center my-4 color">
+                Sgin In To Veroke
+            </h3>
+
+            <small *ngIf="showErroronemail" class="text-red-600">
+                You Do Have An Accout on this Email
+                You Are New So Sign Up First
+           </small>
+            <mat-form-field appearance="fill">
+                <mat-label>Enter Email</mat-label>
+                <input matInput formControlName="email" type="email" placeholder="Placeholder">
+                <mat-error
+                *ngIf="registerationForm.get('email')?.hasError('required') && registerationForm.get('email')?.touched">Email
+                is Required</mat-error>
+                <mat-error
+                *ngIf="registerationForm.get('email')?.hasError('email') && registerationForm.get('email')?.touched">Enter
+                Valid Email
+                </mat-error>
+                <button mat-icon-button matSuffix    class="mr-4">
+                    <mat-icon >email</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <small *ngIf="showErroronpass" class="text-red-600">
+                Your Password Not Match
+           </small>
+
+            <mat-form-field>
+                <mat-label>Enter your password</mat-label>
+                <input matInput  formControlName="password" [type]="hide ? 'password' : 'text'" />
+                <mat-error
+                *ngIf="registerationForm.get('email')?.hasError('required') && registerationForm.get('email')?.touched">Password
+                is Required</mat-error>
+                <button
+                class="mr-4"
+                  mat-icon-button
+                  matSuffix
+                  (click)="clickEvent()"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide"
+                >
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+
+            <h3 class="font-bold text-gray-700 flex justify-center text-center my-2">
+                Forgot Your Password
+            </h3>
+
+
+            <button type="submit" mat-flat-button 
+                class="text-white font-bold rounded-full self-center py-2 w-1/3 mx-5 my-5 cursor-pointer bGColor transition-colors">
+                SGIN IN
+            </button>
+        </form>
+
+    </main>
+
+</div>

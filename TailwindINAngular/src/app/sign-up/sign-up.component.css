@@ -1,0 +1,62 @@
+.color {
+    color: rgb(58, 175, 161);
+}
+
+.bGColor {
+    background-color: rgb(58, 175, 161);
+}
+
+.bGColor:hover {
+    background-color: rgb(23, 123, 112);
+}
+
+.custom-class-Rs{
+    height: 100%;
+}
+
+
+@media (max-width: 1024px) {
+    .custom-class-main-1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .custom-class-Ls {
+        display: flex;
+        justify-content: center;
+        height: 50%;
+        width: 100%;
+    }
+
+    .custom-class-Rs {
+        width: 90%;
+        display: flex;
+        align-self: center;
+        justify-self: center;
+        padding: 4px;
+        margin: 0;
+        padding: 0%;
+
+    }
+}
+
+@media (max-width: 768px) {
+    .custom-class-main {
+        padding: 0;
+    }
+
+    .custom-class-Ls {
+        display: none;
+    }
+
+    .custom-class-Rs {
+        width: 90%;
+        height: 50%;
+        display: flex;
+        align-self: center;
+        justify-self: center;
+        padding: 4px;
+        margin: 0;
+    }
+}

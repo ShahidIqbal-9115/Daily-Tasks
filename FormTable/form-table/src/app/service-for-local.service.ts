@@ -13,9 +13,9 @@ export class ServiceForLocalService {
 
   constructor(private http: HttpClient) { }
 
-  // getDataFromApi(): Observable<any> {
-  //   return this.http.get<any>(this.apiUrl);
-  // }
+  getDataFromApi(): Observable<any> {
+    return this.http.get<any>(this.apiUrl);
+  }
 
   postdataDataToApi(data:any): Observable<any> {
     return this.http.post<any>(`https://jsonplaceholder.typicode.com/posts`,data);

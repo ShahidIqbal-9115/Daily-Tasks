@@ -1,2 +1,34 @@
-<h1>{{title}}</h1>
-<h2>Current Date :</h2> <h3>{{currentData()}}</h3>
+<h3>{{title}}</h3>
+<h6>{{currentData()}}</h6>
+
+<form [formGroup]="registerationForm" class="Form" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+        <mat-label>Enter Your Name</mat-label>
+        <input matInput formControlName="name" type="name" placeholder="Enter Name">
+    </mat-form-field>
+
+    <div  formArrayName="skills">
+        <div  *ngFor="let control of contacts['controls']; let i =index">
+          <input type="text" 
+            placeholder="Add Skill..."
+            [formControlName]="i">
+        </div>
+    </div>
+
+    <button type="submit" mat-flat-button>Submit</button>
+
+</form>
+
+<!-- <span *ngIf="showFormData">{{registerationForm.value | json}}</span> -->
+
+<table *ngIf="showFormData">
+    <h5>Example Table</h5>
+    <tbody >
+        <tr>
+            <td >{{registerationForm.value.name }}</td>           
+        </tr>
+        <tr>
+            <td >{{registerationForm.value.skills }}</td>           
+        </tr>
+    </tbody>
+</table>

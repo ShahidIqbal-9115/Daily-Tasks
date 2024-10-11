@@ -28,12 +28,18 @@ import {
 export class SignUpComponent {
 
   user: any = [];
+
   // radioForm: FormGroup;
   constructor(private fb: FormBuilder, private router: Router, private services: ServicesService, public dialog: MatDialog) {
     // this.radioForm = this.fb.group({
     //   selectedOption: ['Admin']  // Default value
     // });
     // this.getSelectedOption();
+
+    // this.registerationForm.patchValue(this.services.dataToUpdate);
+
+
+
   }
 
   // getSelectedOption() {
@@ -42,6 +48,14 @@ export class SignUpComponent {
 
 
   ngOnInit() {
+    // let dataFromLocal = this.services.get('tolocal');
+
+    // dataFromLocal.forEach((item: any) => {
+    //   if (item.email == this.services.dataToUpdate) {
+    //     this.registerationForm.patchValue(item);
+    //     console.log(item);
+    //   }
+    // });
     // localStorage.setItem('user', JSON.stringify(this.user));
   }
 
@@ -64,6 +78,7 @@ export class SignUpComponent {
 
   Match: boolean = false;
   roleshow: boolean = false;
+
   onSubmit() {
     // this.registerationForm.value.role= this.getSelectedOption();
     if (this.registerationForm.invalid) {
@@ -73,28 +88,45 @@ export class SignUpComponent {
         this.Match = true;
       } else {
         if (this.registerationForm.value.role == 'user' || this.registerationForm.value.role == 'admin' || this.registerationForm.value.role == 'User' || this.registerationForm.value.role == 'Admin') {
-          console.log(this.services.get('tolocal'));
           let dataFromLocal = this.services.get('tolocal');
           if (dataFromLocal == null) {
             this.registerationForm.value.id = this.id;
             this.user.push(this.registerationForm.value);
             this.services.set('tolocal', this.user);
+            this.dialog.open(saveDailog);
+            setTimeout(() => {
+              this.registerationForm.reset();
+              this.router.navigate(['']);
+            }, 1000);           
           } else {
-            this.registerationForm.value.id = dataFromLocal[dataFromLocal.length - 1].id + 1;
-            dataFromLocal.push(this.registerationForm.value);
-            this.services.set('tolocal', dataFromLocal);
+            let dataFromLocal = this.services.get('tolocal');
+            if (dataFromLocal.some((item:any) => item.email === this.registerationForm.value.email)) {
+              alert('You already have an accoutn');
+            } else{
+              this.dialog.open(saveDailog);
+              setTimeout(() => {
+                this.registerationForm.reset();
+                this.router.navigate(['']);
+              }, 1000);
+              this.registerationForm.value.id = dataFromLocal[dataFromLocal.length - 1].id + 1;
+              dataFromLocal.push(this.registerationForm.value);
+              this.services.set('tolocal', dataFromLocal);
+            }
           }
-          this.dialog.open(saveDailog);
-          setTimeout(() => {
-            this.registerationForm.reset();
-           this.router.navigate(['']);
-          }, 1000);
-         
         } else {
           this.roleshow = true;
         }
       }
     }
+  }
+
+  updateButton() {
+    let localstore = this.services.get('tolocal');
+    localstore.forEach((item: any, index: any) => {
+      if (item.email == this.registerationForm.value.email) {
+        localstore[index] = this.registerationForm.value;
+      }
+    });
   }
 
   remove() {

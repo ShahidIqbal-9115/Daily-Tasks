@@ -1,7 +1,7 @@
 <h1 class="font-bold text-white flex justify-between rounded p-5 bg-blue-400 mx-5 my-5">
   <p>Start</p>
   <p>Main</p>
-  <p>End</p>
+  <p  (click)="profileUpdate()" class="text-gray-700">{{profile.name}}</p>
 </h1>
 
 <button class="menuButton" mat-mini-fab aria-label="Example icon button with a menu icon" (click)="toggleDisplay()">
@@ -23,7 +23,7 @@
 
   <div class="rightSide">
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-1/2">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-1/2 h-full">
       @for(c of TableHeading; track $index){
       @if(c!='actions'){
       <ng-container matColumnDef={{c}}>

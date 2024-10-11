@@ -35,6 +35,7 @@ export class LoginComponent {
 
   showErroronemail: boolean = false;
   showErroronpass: boolean = false;
+  
   onSubmit() {
     if (this.registerationForm.invalid) {
       // alert("Fill Form");
@@ -45,6 +46,7 @@ export class LoginComponent {
         if (item.email == dataUpdate.email) {
           if (item.password == dataUpdate.password) {
             this.router.navigate(['/home']);
+            this.services.currentUser=this.registerationForm.value.email;
           }
           this.showErroronpass = true;
           this.showErroronemail = false;
@@ -63,5 +65,6 @@ export class LoginComponent {
     this.hide = !this.hide;
   }
 
-
 }
+
+

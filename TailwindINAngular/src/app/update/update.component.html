@@ -1,0 +1,136 @@
+<main class="dailog">
+
+    <form [formGroup]="registerationForm"
+        class="flex flex-col mt-1 h-full w-full justify-between ms:h-full custom-class-Rs" (ngSubmit)="onSubmit()">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" type="text" placeholder="Enter Your Name">
+            <mat-error
+                *ngIf="registerationForm.get('name')?.hasError('required') && registerationForm.get('name')?.touched">Name
+                is Required</mat-error>
+            <mat-error
+                *ngIf="registerationForm.get('name')?.hasError('pattern') && registerationForm.get('name')?.touched">Name
+                contain only Alfabets</mat-error>
+            <button mat-icon-button matSuffix class="mr-4">
+                <mat-icon>personal</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Enter Email</mat-label>
+            <input matInput formControlName="email" type="email" placeholder="Enter Your Email">
+            <mat-error
+                *ngIf="registerationForm.get('email')?.hasError('required') && registerationForm.get('email')?.touched">Email
+                is Required
+            </mat-error>
+            <mat-error
+                *ngIf="registerationForm.get('email')?.hasError('email') && registerationForm.get('email')?.touched">Enter
+                Valid Email
+            </mat-error>
+            <button mat-icon-button matSuffix class="mr-4">
+                <mat-icon>email</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Enter your Password</mat-label>
+            <input matInput formControlName="password" [type]="hide ? 'password' : 'text'"
+                placeholder="Enter Password" />
+            <mat-error
+                *ngIf="registerationForm.get('password')?.hasError('required') && registerationForm.get('password')?.touched">Please
+                Enter Password</mat-error>
+            <mat-error
+                *ngIf="registerationForm.get('password')?.hasError('minlength') && registerationForm.get('password')?.touched">Please
+                Enter strong Password</mat-error>
+
+            <small *ngIf="Match" class="text-red-600">
+                Password & confirmPassword Should Be Same
+            </small>
+            <button class="mr-4" mat-icon-button matSuffix (click)="clickEvent()" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <mat-label>Confirm Password</mat-label>
+            <input matInput formControlName="confirmPassword" [type]="hide ? 'password' : 'text'"
+                placeholder="Confirm Password" />
+            <mat-error
+                *ngIf="registerationForm.get('confirmPassword')?.hasError('required') && registerationForm.get('confirmPassword')?.touched">Confirm
+                Password Please</mat-error>
+            <mat-error
+                *ngIf="registerationForm.get('confirmPassword')?.hasError('minlength') && registerationForm.get('password')?.touched">Please
+                Enter strong Password</mat-error>
+
+            <small *ngIf="Match" class="text-red-600">
+                Password & confirmPassword Should Be Same
+            </small>
+            <button class="mr-4" mat-icon-button matSuffix (click)="clickEvent()" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Enter Phone No</mat-label>
+            <input matInput formControlName="phone" type="number" placeholder="Enter Phone No:">
+            <mat-error
+                *ngIf="registerationForm.get('phone')?.hasError('required') && registerationForm.get('phone')?.touched">Phone
+                Number is Required</mat-error>
+            <button mat-icon-button matSuffix class="mr-4">
+                <mat-icon>phone</mat-icon>
+            </button>
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Enter Your Role</mat-label>
+            <input matInput formControlName="role" type="text" placeholder="Admin / User">
+            <mat-error
+                *ngIf="registerationForm.get('role')?.hasError('required') && registerationForm.get('role')?.touched">
+                Mention Your Role
+            </mat-error>
+            <small *ngIf="roleshow" class="text-red-600">
+                Role Should Be Admin or Users
+            </small>
+
+        </mat-form-field>
+
+        <!-- <form [formGroup]="radioForm">
+    <mat-label>Select Your Role</mat-label>
+    <br/>
+    <label>
+      <input type="radio" formControlName="selectedOption" value="Admin" (click)="role()" />
+      Admin
+    </label>
+    <br/>
+    <label>
+      <input type="radio" formControlName="selectedOption" value="User" (click)="role()"  />
+      User
+    </label>
+</form> -->
+
+
+        <div class="flex justify-around align-middle w-full">
+            <button type="submit" mat-flat-button
+                class="text-white font-bold rounded-full self-center py-2 w-1/3 mb-1 cursor-pointer bg-blue-600 transition-colors">
+                Update
+            </button>
+
+            <button mat-flat-button (click)="onclose()"
+                class="text-red-600 font-bold rounded-full self-center py-2 mr-4 w-1/3 mb-1 cursor-pointer bg-blue-600 transition-colors">
+                Close
+            </button>
+
+        </div>
+
+        
+    </form>
+
+</main>

@@ -2,14 +2,20 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ServicesService } from '../services.service';
-import {MatTableModule} from '@angular/material/table';
-import {MatIconModule} from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+
+import { UpdateComponent } from '../update/update.component';
+import {
+  MatDialog,
+} from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [CommonModule,MatTableModule,MatIconModule],
+  imports: [CommonModule, MatTableModule, MatIconModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
   animations: [
@@ -27,26 +33,47 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     ])
   ]
 })
-export class HomePageComponent   {
+export class HomePageComponent {
 
-  dataSource:any=[];
-  localstore:any=[];
-  isVisible: boolean = true; 
+  dataSource: any = [];
+  localstore: any = [];
+  profile: any ='str';
+  isVisible: boolean = true;
 
-  constructor(private router:Router,private services:ServicesService){
-     this.localstore=this.services.get('tolocal');  
-     this.dataSource=this.localstore;
+  constructor(private router: Router, private services: ServicesService,public dialog: MatDialog) {
+  
+    this.localstore = this.services.get('tolocal');
+    this.dataSource = this.localstore;
+   
+  }
+
+  ngOnInit()  {
+
+    if (this.services.currentUser!==null) {
+      this.localstore.forEach((item: any) => {
+        if (item.email == this.services.currentUser) {
+          this.profile = item;
+        }
+      });
+    }
   }
 
 
+  profileUpdate() {
+    this.dialog.open(UpdateComponent);
+    this.router.navigate(['']);
+    this.localstore.forEach((item: any) => {
+      if (item.email == this.services.currentUser) {
+        this.services.dataToUpdate=this.profile.email;
+      }
+    });
+  }
 
   toggleDisplay() {
-    this.isVisible = !this.isVisible; 
+    this.isVisible = !this.isVisible;
   }
 
-  ngOnInit(): void {
-  }
-
+ 
   TableHeading: any[] = ['id',
     'name',
     'email',
@@ -54,38 +81,32 @@ export class HomePageComponent   {
     'role',
   ]
 
-  RendertableAdmin() {  
-    this.dataSource = this.localstore.filter((item:any) => item.role === 'admin'||item.role=='Admin');
+  RendertableAdmin() {
+    this.dataSource = this.localstore.filter((item: any) => item.role === 'admin' || item.role == 'Admin');
   }
 
   RendertableUser() {
-    this.dataSource = this.localstore.filter((item:any) => item.role === 'user'||item.role=='User');
+    this.dataSource = this.localstore.filter((item: any) => item.role === 'user' || item.role == 'User');
   }
 
   allRecords() {
-    this.dataSource=this.localstore;
+    this.dataSource = this.localstore;
   }
 
-
-  LogOut(){
+  LogOut() {
     this.router.navigate(['']);
   }
 
-  login(){
+  login() {
     this.router.navigate(['']);
   }
-   signUp(){
+  signUp() {
     this.router.navigate(['/sginup']);
-   }
-
-  clear(){
-    this.services.remove('tolocal');
-    window.location.reload();
   }
 
-
-
-
-
+  clear() {
+    this.router.navigate(['/sginup']);
+    this.services.remove('tolocal');
+  }
 
 }

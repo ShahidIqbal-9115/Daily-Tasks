@@ -10,6 +10,13 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { CommonModule } from '@angular/common';
 import { ServicesService } from '../services.service';
 import { FormBuilder } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { Inject } from '@angular/core';
+import {
+  MatDialog,
+  MatDialogRef,
+} from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -21,21 +28,19 @@ import { FormBuilder } from '@angular/forms';
 export class SignUpComponent {
 
   user: any = [];
-  radioForm: FormGroup;
-  constructor(private fb: FormBuilder, private router: Router, private services: ServicesService) {
-    this.radioForm = this.fb.group({
-      selectedOption: ['Admin']  // Default value
-    });
-    this.getSelectedOption();
+  // radioForm: FormGroup;
+  constructor(private fb: FormBuilder, private router: Router, private services: ServicesService, public dialog: MatDialog) {
+    // this.radioForm = this.fb.group({
+    //   selectedOption: ['Admin']  // Default value
+    // });
+    // this.getSelectedOption();
   }
 
-  getSelectedOption() {
-    return this.radioForm.get('selectedOption')?.value;
-  }
+  // getSelectedOption() {
+  //   return this.radioForm.get('selectedOption')?.value;
+  // }
 
-  ngOnChanges() {
-    console.log(this.radioForm.get('selectedOption')?.value);
-  }
+
   ngOnInit() {
     // localStorage.setItem('user', JSON.stringify(this.user));
   }
@@ -58,16 +63,16 @@ export class SignUpComponent {
   // }
 
   Match: boolean = false;
-  roleshow:boolean=false;
+  roleshow: boolean = false;
   onSubmit() {
     // this.registerationForm.value.role= this.getSelectedOption();
     if (this.registerationForm.invalid) {
-      alert("Fill Form");
+      // alert("Fill Form");
     } else {
       if (this.registerationForm.value.password !== this.registerationForm.value.confirmPassword) {
         this.Match = true;
       } else {
-        if (this.registerationForm.value.role == 'user' || this.registerationForm.value.role == 'admin'||this.registerationForm.value.role == 'User' || this.registerationForm.value.role == 'Admin') {
+        if (this.registerationForm.value.role == 'user' || this.registerationForm.value.role == 'admin' || this.registerationForm.value.role == 'User' || this.registerationForm.value.role == 'Admin') {
           console.log(this.services.get('tolocal'));
           let dataFromLocal = this.services.get('tolocal');
           if (dataFromLocal == null) {
@@ -79,11 +84,14 @@ export class SignUpComponent {
             dataFromLocal.push(this.registerationForm.value);
             this.services.set('tolocal', dataFromLocal);
           }
-          // this.router.navigate(['/home']);
-          this.router.navigate(['']);
-          this.registerationForm.reset();
-        } else{
-          this.roleshow=true;
+          this.dialog.open(saveDailog);
+          setTimeout(() => {
+            this.registerationForm.reset();
+           this.router.navigate(['']);
+          }, 1000);
+         
+        } else {
+          this.roleshow = true;
         }
       }
     }
@@ -98,4 +106,23 @@ export class SignUpComponent {
     this.hide = !this.hide;
   }
 
+}
+
+@Component({
+  selector: 'savedailog.html',
+  standalone: true,
+  imports: [MatDialogModule],
+  // control by defult change in Component
+  templateUrl: './savedailog.html',
+  styleUrl: './sign-up.component.css'
+})
+
+export class saveDailog {
+
+  constructor(public dialogRef: MatDialogRef<saveDailog>,) {
+    setTimeout(() => {
+      dialogRef.close();
+    }, 1000);
+
+  }
 }

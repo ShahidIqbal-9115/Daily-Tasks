@@ -25,10 +25,7 @@
                 Sgin In To Veroke
             </h3>
 
-            <small *ngIf="showErroronemail" class="text-red-600">
-                You Do Have An Accout on this Email
-                You Are New So Sign Up First
-           </small>
+            
             <mat-form-field appearance="fill">
                 <mat-label>Enter Email</mat-label>
                 <input matInput formControlName="email" type="email" placeholder="Placeholder">
@@ -39,14 +36,16 @@
                 *ngIf="registerationForm.get('email')?.hasError('email') && registerationForm.get('email')?.touched">Enter
                 Valid Email
                 </mat-error>
+                <mat-error *ngIf="showErroronemail" class="text-red-600">
+                    You Do Have An Accout on this Email
+                    You Are New So Sign Up First
+               </mat-error>
                 <button mat-icon-button matSuffix    class="mr-4">
                     <mat-icon >email</mat-icon>
                 </button>
             </mat-form-field>
 
-            <small *ngIf="showErroronpass" class="text-red-600">
-                Your Password Not Match
-           </small>
+           
 
             <mat-form-field>
                 <mat-label>Enter your password</mat-label>
@@ -54,6 +53,9 @@
                 <mat-error
                 *ngIf="registerationForm.get('email')?.hasError('required') && registerationForm.get('email')?.touched">Password
                 is Required</mat-error>
+                <mat-error *ngIf="showErroronpass" class="text-red-600">
+                    Your Password Not Match
+               </mat-error>
                 <button
                 class="mr-4"
                   mat-icon-button

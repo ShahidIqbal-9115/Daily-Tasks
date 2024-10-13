@@ -1,7 +1,7 @@
 <h1 class="font-bold text-white flex justify-between rounded p-5 bg-blue-400 mx-5 my-5">
   <p>Start</p>
   <p>Main</p>
-  <p  (click)="profileUpdate()" class="text-gray-700">{{profile.name}}</p>
+  <p  (click)="profileUpdate()" class="text-gray-700 cursor-pointer underline">{{profile.name}}</p>
 </h1>
 
 <button class="menuButton" mat-mini-fab aria-label="Example icon button with a menu icon" (click)="toggleDisplay()">
@@ -16,7 +16,6 @@
       <button (click)="RendertableAdmin()" class="bg-blue-600 text-white p-2 rounded ">Admin Records </button>
       <button (click)="RendertableUser()" class="bg-blue-600 text-white p-2 rounded ">User Records </button>
       <button (click)="LogOut()" class="bg-blue-600 text-white p-2 rounded ">Log Out </button>
-      <button (click)="signUp()" class="bg-blue-600 text-white p-2 rounded ">Add New Records </button>
       <button (click)="clear()" class="bg-blue-600 text-white p-2 rounded ">clear Records </button>
     </nav>
   </div>

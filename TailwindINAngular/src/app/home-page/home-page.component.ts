@@ -5,11 +5,12 @@ import { ServicesService } from '../services.service';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-
-import { UpdateComponent } from '../update/update.component';
 import {
   MatDialog,
 } from '@angular/material/dialog';
+import { RouteGardService } from '../route-gard.service';
+import { RouteGardServicetoinfo } from '../route-gardtoinfo-update.service';
+
 
 
 @Component({
@@ -37,10 +38,10 @@ export class HomePageComponent {
 
   dataSource: any = [];
   localstore: any = [];
-  profile: any ='str';
+  profile: any;
   isVisible: boolean = true;
 
-  constructor(private router: Router, private services: ServicesService,public dialog: MatDialog) {
+  constructor(private router: Router, private services: ServicesService,public dialog: MatDialog, private routeGard:RouteGardService,private routeGardtoinfo:RouteGardServicetoinfo) {
   
     this.localstore = this.services.get('tolocal');
     this.dataSource = this.localstore;
@@ -48,7 +49,7 @@ export class HomePageComponent {
   }
 
   ngOnInit()  {
-
+    this.routeGard.cannavitohome=false;
     if (this.services.currentUser!==null) {
       this.localstore.forEach((item: any) => {
         if (item.email == this.services.currentUser) {
@@ -60,8 +61,8 @@ export class HomePageComponent {
 
 
   profileUpdate() {
-    this.dialog.open(UpdateComponent);
-    this.router.navigate(['']);
+    this.routeGardtoinfo.cannavitoinfo=true;
+    this.router.navigate(['/updateInfo']);
     this.localstore.forEach((item: any) => {
       if (item.email == this.services.currentUser) {
         this.services.dataToUpdate=this.profile.email;
@@ -94,15 +95,15 @@ export class HomePageComponent {
   }
 
   LogOut() {
+    this.profile ='';
+    this.routeGard.cannavitohome=false;
     this.router.navigate(['']);
   }
 
   login() {
     this.router.navigate(['']);
   }
-  signUp() {
-    this.router.navigate(['/sginup']);
-  }
+
 
   clear() {
     this.router.navigate(['/sginup']);

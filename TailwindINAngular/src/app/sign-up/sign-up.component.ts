@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component ,ChangeDetectionStrategy, signal } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelect } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioButton } from '@angular/material/radio';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -12,51 +13,53 @@ import { ServicesService } from '../services.service';
 import { FormBuilder } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
+
 import {
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
 
+interface TypeList {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [MatRadioButton, ReactiveFormsModule, CommonModule, MatFormFieldModule, MatAutocompleteModule, MatIconModule, MatInputModule, RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [MatRadioButton, MatSelect,ReactiveFormsModule, CommonModule, MatFormFieldModule, MatAutocompleteModule, MatIconModule, MatInputModule, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.css'
+  styleUrl: './sign-up.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignUpComponent {
 
   user: any = [];
+  Match: boolean = false;
+  typeList: TypeList[] = [
+    {value: 'Admin', viewValue: 'Admin'},
+    {value: 'User', viewValue: 'User'},
+  ];
 
-  // radioForm: FormGroup;
+
   constructor(private fb: FormBuilder, private router: Router, private services: ServicesService, public dialog: MatDialog) {
-    // this.radioForm = this.fb.group({
-    //   selectedOption: ['Admin']  // Default value
-    // });
-    // this.getSelectedOption();
-
-    // this.registerationForm.patchValue(this.services.dataToUpdate);
-
+  
 
 
   }
 
-  // getSelectedOption() {
-  //   return this.radioForm.get('selectedOption')?.value;
-  // }
-
 
   ngOnInit() {
-    // let dataFromLocal = this.services.get('tolocal');
 
-    // dataFromLocal.forEach((item: any) => {
-    //   if (item.email == this.services.dataToUpdate) {
-    //     this.registerationForm.patchValue(item);
-    //     console.log(item);
-    //   }
-    // });
-    // localStorage.setItem('user', JSON.stringify(this.user));
+  }
+
+
+  matchPassword(){
+    if (this.registerationForm.value.password !== this.registerationForm.value.confirmPassword) {
+      this.Match = true;
+    } else {
+      this.Match =false;
+    }
   }
 
   id: any = 1;
@@ -71,16 +74,9 @@ export class SignUpComponent {
     role: new FormControl('', [Validators.required]),
   });
 
-  // role() {
-  //   this.registerationForm.value.role = this.getSelectedOption();
-  //   console.log(this.registerationForm.value.role);
-  // }
 
-  Match: boolean = false;
-  roleshow: boolean = false;
 
   onSubmit() {
-    // this.registerationForm.value.role= this.getSelectedOption();
     if (this.registerationForm.invalid) {
       // alert("Fill Form");
     } else {
@@ -94,6 +90,7 @@ export class SignUpComponent {
             this.user.push(this.registerationForm.value);
             this.services.set('tolocal', this.user);
             this.dialog.open(saveDailog);
+            
             setTimeout(() => {
               this.registerationForm.reset();
               this.router.navigate(['']);
@@ -101,7 +98,7 @@ export class SignUpComponent {
           } else {
             let dataFromLocal = this.services.get('tolocal');
             if (dataFromLocal.some((item:any) => item.email === this.registerationForm.value.email)) {
-              alert('You already have an accoutn');
+              alert('You already have an account On this Email');
             } else{
               this.dialog.open(saveDailog);
               setTimeout(() => {
@@ -113,9 +110,7 @@ export class SignUpComponent {
               this.services.set('tolocal', dataFromLocal);
             }
           }
-        } else {
-          this.roleshow = true;
-        }
+        } 
       }
     }
   }
@@ -133,10 +128,13 @@ export class SignUpComponent {
     this.services.remove('tolocal');
   }
 
-  hide = true;
-  clickEvent() {
-    this.hide = !this.hide;
+  protected readonly value = signal('');
+  hide = signal(true);
+  clickEvent(event :MouseEvent) {
+    this.hide.set(!this.hide());
+    event.stopPropagation();
   }
+  
 
 }
 

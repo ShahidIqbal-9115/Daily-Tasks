@@ -7,7 +7,7 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { Router } from '@angular/router';
 import { ServicesService } from '../services.service';
 import { CommonModule } from '@angular/common';
-
+import { RouteGardService } from '../route-gard.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
 export class LoginComponent {
 
 
-  constructor(private router: Router, private services: ServicesService) {
+  constructor(private router: Router, private services: ServicesService,private routeGard:RouteGardService) {
 
   }
 
@@ -45,6 +45,7 @@ export class LoginComponent {
       storeData.forEach((item: any) => {
         if (item.email == dataUpdate.email) {
           if (item.password == dataUpdate.password) {
+            this.routeGard.cannavitohome=true;
             this.router.navigate(['/home']);
             this.services.currentUser=this.registerationForm.value.email;
           }

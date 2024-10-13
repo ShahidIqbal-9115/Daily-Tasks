@@ -53,9 +53,12 @@
                 </button>
             </mat-form-field>
 
+            <small *ngIf="Match" class="text-red-600">
+                Password & confirmPassword Should Be Same
+            </small>
             <mat-form-field>
                 <mat-label>Enter your Password</mat-label>
-                <input matInput formControlName="password" [type]="hide ? 'password' : 'text'"
+                <input matInput (keyup)="matchPassword()" formControlName="password" [type]="hide() ? 'password' : 'text'"
                     placeholder="Enter Password" />
                 <mat-error
                     *ngIf="registerationForm.get('password')?.hasError('required') && registerationForm.get('password')?.touched">Please
@@ -63,20 +66,18 @@
                 <mat-error
                     *ngIf="registerationForm.get('password')?.hasError('minlength') && registerationForm.get('password')?.touched">Please
                     Enter strong Password</mat-error>
-                    
-                    <small *ngIf="Match" class="text-red-600">
-                        Password & confirmPassword Should Be Same
-                    </small>
-                <button class="mr-4" mat-icon-button matSuffix (click)="clickEvent()"
-                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <button class="mr-4" mat-icon-button matSuffix (click)="clickEvent($event)"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+                    <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
             </mat-form-field>
 
-          
+            <small *ngIf="Match" class="text-red-600">
+                Password & confirmPassword Should Be Same
+            </small>
             <mat-form-field>
                 <mat-label>Confirm Password</mat-label>
-                <input matInput formControlName="confirmPassword" [type]="hide ? 'password' : 'text'"
+                <input matInput (keyup)="matchPassword()" formControlName="confirmPassword" [type]="hide() ? 'password' : 'text'"
                     placeholder="Confirm Password" />
                 <mat-error
                     *ngIf="registerationForm.get('confirmPassword')?.hasError('required') && registerationForm.get('confirmPassword')?.touched">Confirm
@@ -85,12 +86,9 @@
                     *ngIf="registerationForm.get('confirmPassword')?.hasError('minlength') && registerationForm.get('password')?.touched">Please
                     Enter strong Password</mat-error>
         
-                <small *ngIf="Match" class="text-red-600">
-                    Password & confirmPassword Should Be Same
-                </small>
-                <button class="mr-4" mat-icon-button matSuffix (click)="clickEvent()"
-                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <button class="mr-4" mat-icon-button matSuffix (click)="clickEvent($event)"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+                    <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
             </mat-form-field>
 
@@ -108,33 +106,18 @@
             </mat-form-field>
 
 
-           
-            <mat-form-field appearance="fill">
+            <mat-form-field  appearance="fill">
                 <mat-label>Enter Your Role</mat-label>
-                <input matInput formControlName="role" type="text" placeholder="Admin / User">
+                <mat-select formControlName="role">
+                  @for (type of typeList; track type) {
+                    <mat-option [value]="type.value">{{type.viewValue}}</mat-option>
+                  }
+                </mat-select>
                 <mat-error
-                    *ngIf="registerationForm.get('role')?.hasError('required') && registerationForm.get('role')?.touched">
-                    Mention Your Role
-                </mat-error>               
-                <small *ngIf="roleshow" class="text-red-600">
-                    Role Should Be Admin or Users
-                </small>
-                
-            </mat-form-field>
-
-            <!-- <form [formGroup]="radioForm">
-                <mat-label>Select Your Role</mat-label>
-                <br/>
-                <label>
-                  <input type="radio" formControlName="selectedOption" value="Admin" (click)="role()" />
-                  Admin
-                </label>
-                <br/>
-                <label>
-                  <input type="radio" formControlName="selectedOption" value="User" (click)="role()"  />
-                  User
-                </label>
-            </form> -->
+                *ngIf="registerationForm.get('role')?.hasError('required') && registerationForm.get('role')?.touched">
+                Mention Your Role
+            </mat-error> 
+              </mat-form-field >
 
 
 

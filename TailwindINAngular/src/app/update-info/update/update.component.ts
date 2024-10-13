@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ServicesService } from '../services.service';
+import { ServicesService } from '../../services.service';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,6 +14,7 @@ import {
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { RouteGardServicetoinfo } from '../../route-gardtoinfo-update.service';
 
 
 @Component({
@@ -25,14 +26,13 @@ import {
 })
 export class UpdateComponent {
 
-  constructor(public dialogRef: MatDialogRef<UpdateComponent>,private services:ServicesService,private router: Router,) {
-    setTimeout(() => {
-      // dialogRef.close();
-    }, 1000);
+  constructor(private services:ServicesService,private router: Router,private routeGardToInfo:RouteGardServicetoinfo) {
+
 
   }
 
   ngOnInit() {
+    this.routeGardToInfo.cannavitoinfo=false;
     let dataFromLocal = this.services.get('tolocal');
 
     dataFromLocal.forEach((item: any) => {
@@ -44,7 +44,7 @@ export class UpdateComponent {
   }
 
   onclose(){
-      this.dialogRef.close();
+    this.router.navigate(['']);
   }
 
   registerationForm = new FormGroup({
@@ -74,10 +74,9 @@ export class UpdateComponent {
             if (item.id == this.registerationForm.value.id) {
               dataFromLocal[index] = this.registerationForm.value;
               this.services.currentUser=item.email;
-              this.dialogRef.close();
+              // this.dialogRef.close();
             }
           });
-
           this.services.set('tolocal', dataFromLocal);
           this.router.navigate(['']);
         } else {  

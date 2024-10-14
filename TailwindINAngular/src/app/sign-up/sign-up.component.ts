@@ -42,12 +42,7 @@ export class SignUpComponent {
   ];
 
 
-  constructor(private fb: FormBuilder, private router: Router, private services: ServicesService, public dialog: MatDialog) {
-  
-
-
-  }
-
+  constructor(private fb: FormBuilder, private router: Router, private services: ServicesService, public dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -73,8 +68,6 @@ export class SignUpComponent {
     phone: new FormControl('', [Validators.required]),
     role: new FormControl('', [Validators.required]),
   });
-
-
 
   onSubmit() {
     if (this.registerationForm.invalid) {
@@ -128,14 +121,10 @@ export class SignUpComponent {
     this.services.remove('tolocal');
   }
 
-  protected readonly value = signal('');
-  hide = signal(true);
-  clickEvent(event :MouseEvent) {
-    this.hide.set(!this.hide());
-    event.stopPropagation();
+  hide = true;
+  clickEvent() {
+    this.hide = !this.hide;
   }
-  
-
 }
 
 @Component({
@@ -153,6 +142,5 @@ export class saveDailog {
     setTimeout(() => {
       dialogRef.close();
     }, 1000);
-
   }
 }

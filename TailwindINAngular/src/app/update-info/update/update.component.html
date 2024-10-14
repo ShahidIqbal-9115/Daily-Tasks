@@ -47,7 +47,7 @@
             <small *ngIf="Match" class="text-red-600">
                 Password & confirmPassword Should Be Same
             </small>
-            <button class="mr-4" mat-icon-button matSuffix (click)="clickEvent()" [attr.aria-label]="'Hide password'"
+            <button class="mr-4" type="button" mat-icon-button matSuffix (click)="clickEvent()" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
@@ -68,7 +68,7 @@
             <small *ngIf="Match" class="text-red-600">
                 Password & confirmPassword Should Be Same
             </small>
-            <button class="mr-4" mat-icon-button matSuffix (click)="clickEvent()" [attr.aria-label]="'Hide password'"
+            <button class="mr-4" type="button" mat-icon-button matSuffix (click)="clickEvent()" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
@@ -87,8 +87,21 @@
             </button>
         </mat-form-field>
 
+        <mat-form-field  appearance="fill">
+            <mat-label>Enter Your Role</mat-label>
+            <mat-select formControlName="role">
+              @for (type of typeList; track type) {
+                <mat-option [value]="type.value">{{type.viewValue}}</mat-option>
+              }
+            </mat-select>
+            <mat-error
+            *ngIf="registerationForm.get('role')?.hasError('required') && registerationForm.get('role')?.touched">
+            Mention Your Role
+        </mat-error> 
+          </mat-form-field >
 
 
+<!-- 
         <mat-form-field appearance="fill">
             <mat-label>Enter Your Role</mat-label>
             <input matInput formControlName="role" type="text" placeholder="Admin / User">
@@ -100,7 +113,7 @@
                 Role Should Be Admin or Users
             </small>
 
-        </mat-form-field>
+        </mat-form-field> -->
 
         <!-- <form [formGroup]="radioForm">
     <mat-label>Select Your Role</mat-label>

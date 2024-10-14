@@ -12,7 +12,6 @@ import { RouteGardService } from '../route-gard.service';
 import { RouteGardServicetoinfo } from '../route-gardtoinfo-update.service';
 
 
-
 @Component({
   selector: 'app-home-page',
   standalone: true,
@@ -42,23 +41,25 @@ export class HomePageComponent {
   isVisible: boolean = true;
 
   constructor(private router: Router, private services: ServicesService,public dialog: MatDialog, private routeGard:RouteGardService,private routeGardtoinfo:RouteGardServicetoinfo) {
-  
+  console.log(this.routeGard.cannavitohome);
     this.localstore = this.services.get('tolocal');
     this.dataSource = this.localstore;
    
   }
 
   ngOnInit()  {
-    this.routeGard.cannavitohome=false;
+    // this.routeGard.cannavitohome=false;
     if (this.services.currentUser!==null) {
       this.localstore.forEach((item: any) => {
         if (item.email == this.services.currentUser) {
-          this.profile = item;
+          // this.profile = item;
+          localStorage.setItem('profile', JSON.stringify(item));
+          this.profile=this.services.get('profile');
+          console.log(this.profile);
         }
       });
     }
   }
-
 
   profileUpdate() {
     this.routeGardtoinfo.cannavitoinfo=true;
@@ -73,7 +74,6 @@ export class HomePageComponent {
   toggleDisplay() {
     this.isVisible = !this.isVisible;
   }
-
  
   TableHeading: any[] = ['id',
     'name',
@@ -95,7 +95,7 @@ export class HomePageComponent {
   }
 
   LogOut() {
-    this.profile ='';
+    // this.profile ='';
     this.routeGard.cannavitohome=false;
     this.router.navigate(['']);
   }
@@ -104,10 +104,8 @@ export class HomePageComponent {
     this.router.navigate(['']);
   }
 
-
   clear() {
     this.router.navigate(['/sginup']);
     this.services.remove('tolocal');
   }
-
 }

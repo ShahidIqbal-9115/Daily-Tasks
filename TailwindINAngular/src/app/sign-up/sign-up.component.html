@@ -58,7 +58,7 @@
             </small>
             <mat-form-field>
                 <mat-label>Enter your Password</mat-label>
-                <input matInput (keyup)="matchPassword()" formControlName="password" [type]="hide() ? 'password' : 'text'"
+                <input matInput (keyup)="matchPassword()" formControlName="password" [type]="hide ? 'password' : 'text'"
                     placeholder="Enter Password" />
                 <mat-error
                     *ngIf="registerationForm.get('password')?.hasError('required') && registerationForm.get('password')?.touched">Please
@@ -66,9 +66,10 @@
                 <mat-error
                     *ngIf="registerationForm.get('password')?.hasError('minlength') && registerationForm.get('password')?.touched">Please
                     Enter strong Password</mat-error>
-                <button class="mr-4" mat-icon-button matSuffix (click)="clickEvent($event)"
-                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
-                    <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <button class="mr-4" mat-icon-button matSuffix (click)="clickEvent()"
+                type="button"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
             </mat-form-field>
 
@@ -77,7 +78,7 @@
             </small>
             <mat-form-field>
                 <mat-label>Confirm Password</mat-label>
-                <input matInput (keyup)="matchPassword()" formControlName="confirmPassword" [type]="hide() ? 'password' : 'text'"
+                <input matInput (keyup)="matchPassword()" formControlName="confirmPassword" [type]="hide ? 'password' : 'text'"
                     placeholder="Confirm Password" />
                 <mat-error
                     *ngIf="registerationForm.get('confirmPassword')?.hasError('required') && registerationForm.get('confirmPassword')?.touched">Confirm
@@ -86,9 +87,9 @@
                     *ngIf="registerationForm.get('confirmPassword')?.hasError('minlength') && registerationForm.get('password')?.touched">Please
                     Enter strong Password</mat-error>
         
-                <button class="mr-4" mat-icon-button matSuffix (click)="clickEvent($event)"
-                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
-                    <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <button type="button" class="mr-4" mat-icon-button matSuffix (click)="clickEvent()"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
             </mat-form-field>
 

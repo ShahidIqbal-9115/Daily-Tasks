@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ServicesService } from '../../services.service';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSelect } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
-
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -16,20 +17,26 @@ import {
 } from '@angular/material/dialog';
 import { RouteGardServicetoinfo } from '../../route-gardtoinfo-update.service';
 
+interface TypeList {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-update',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule,MatDialogModule,MatFormFieldModule,MatInputModule,MatRadioButton ,MatTableModule, MatIconModule],
+  imports: [ReactiveFormsModule,MatSelect,MatAutocompleteModule, CommonModule,MatDialogModule,MatFormFieldModule,MatInputModule,MatRadioButton ,MatTableModule, MatIconModule],
   templateUrl: './update.component.html',
   styleUrl: './update.component.css'
 })
 export class UpdateComponent {
 
-  constructor(private services:ServicesService,private router: Router,private routeGardToInfo:RouteGardServicetoinfo) {
+  typeList: TypeList[] = [
+    {value: 'Admin', viewValue: 'Admin'},
+    {value: 'User', viewValue: 'User'},
+  ];
 
-
-  }
+  constructor(private services:ServicesService,private router: Router,private routeGardToInfo:RouteGardServicetoinfo) { }
 
   ngOnInit() {
     this.routeGardToInfo.cannavitoinfo=false;
@@ -74,7 +81,6 @@ export class UpdateComponent {
             if (item.id == this.registerationForm.value.id) {
               dataFromLocal[index] = this.registerationForm.value;
               this.services.currentUser=item.email;
-              // this.dialogRef.close();
             }
           });
           this.services.set('tolocal', dataFromLocal);
@@ -85,8 +91,6 @@ export class UpdateComponent {
       }
     }
   }
-
-
 
   hide = true;
   clickEvent() {

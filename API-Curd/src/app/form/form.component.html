@@ -1,26 +1,11 @@
-<div class="w-full h-full px-20 pt-5 custom-class-main justify-center border-4 align-middle flex ">
+
+<div class="w-full h-full  custom-class-main justify-center border-4 align-middle flex rounded">
 
     <main [@slideToggleAnimation]
-        class="mainContainer h-full flex flex-row max-md:flex-col w-full justify-self-center self-center mx-2 my-2 justify-between border-2 rounded shadow-md bg-white rounded-tl-lg rounded-bl-lg custom-class-main-1">
-
-        <div
-            class=" bGColor rounded-tl-lg custom-class-Ls rounded-bl-lg w-1/3 flex justify-center flex-col ms:hide " >
-            <h1 class="font-bold text-white flex justify-center text-center my-4">
-                WelCome Back!
-            </h1>
-            <h5 class=" text-white flex justify-center text-center my-4">
-                To keep connected with us please <br />
-                login with your personal info
-            </h5>
-            <button type="submit" mat-flat-button routerLink=""
-                class="text-white font-bold rounded-full border-2 border-white self-center py-2 w-1/3 mx-5 my-5 cursor-pointer bGColor transition-colors">
-                SGIN IN
-            </button>
-
-        </div>
+        class="mainContainer h-full flex flex-row max-md:flex-col w-full justify-self-center self-center mx-2 my-2 justify-between  rounded shadow-md bg-white rounded-tl-lg rounded-bl-lg custom-class-main-1">
 
         <form [formGroup]="registerationForm"
-            class="flex flex-col mr-8 mt-1 h-full w-1/2 justify-between ms:h-full custom-class-Rs"
+            class="flex flex-col mt-1 h-full w-full justify-between ms:h-full custom-class-Rs"
             (ngSubmit)="onSubmit()">
 
             <mat-form-field appearance="fill">
@@ -56,7 +41,7 @@
             <small *ngIf="Match" class="text-red-600">
                 Password & confirmPassword Should Be Same
             </small>
-            <mat-form-field>
+            <mat-form-field *ngIf="hideFeild">
                 <mat-label>Enter your Password</mat-label>
                 <input matInput (keyup)="matchPassword()" formControlName="password" [type]="hide ? 'password' : 'text'"
                     placeholder="Enter Password" />
@@ -76,7 +61,7 @@
             <small *ngIf="Match" class="text-red-600">
                 Password & confirmPassword Should Be Same
             </small>
-            <mat-form-field>
+            <mat-form-field *ngIf="hideFeild">
                 <mat-label>Confirm Password</mat-label>
                 <input matInput (keyup)="matchPassword()" formControlName="confirmPassword" [type]="hide ? 'password' : 'text'"
                     placeholder="Confirm Password" />
@@ -122,10 +107,12 @@
 
 
 
-            <button type="submit" mat-flat-button 
+            <button type="submit" mat-flat-button *ngIf="submitbutton"
                 class="text-white font-bold rounded-full self-center py-2 w-1/3 mb-1 cursor-pointer bGColor transition-colors">
-                SGIN UP
+                Submit
             </button>
+            <button mat-flat-button *ngIf="updatebutton" (click)="update()"> update</button>
+            <button mat-flat-button *ngIf="clearbutton" (click)="clear()"> Clear</button>
 
            
             

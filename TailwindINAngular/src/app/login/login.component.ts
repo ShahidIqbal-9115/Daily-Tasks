@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { Router } from '@angular/router';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 import { ServicesService } from '../services.service';
 import { CommonModule } from '@angular/common';
 import { RouteGardService } from '../route-gard.service';
@@ -15,6 +16,16 @@ import { RouteGardService } from '../route-gard.service';
   imports: [ReactiveFormsModule, CommonModule, MatFormFieldModule, MatIconModule, MatInputModule, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
+  animations: [
+    trigger('slideToggleAnimation', [
+      state('void', style({ width: '0', opacity: 0 })),
+      state('*', style({ width: '*', opacity: 1 })),
+      transition(':enter', [
+        style({ width: '0', opacity: 0 }),
+        animate('1000ms ease-out', style({ width: '*', opacity: 1 }))
+      ]),
+    ])
+  ]
 })
 export class LoginComponent {
 
@@ -24,6 +35,7 @@ export class LoginComponent {
   }
 
   ngOnInit() {
+    console.log(this.routeGard.cannavitohome);
     // localStorage.setItem('user', JSON.stringify(this.user));
   }
 
@@ -45,7 +57,8 @@ export class LoginComponent {
       storeData.forEach((item: any) => {
         if (item.email == dataUpdate.email) {
           if (item.password == dataUpdate.password) {
-            this.routeGard.cannavitohome=true;
+            localStorage.setItem('profile', JSON.stringify(dataUpdate));
+            this.routeGard.cannavitohome= this.services.get('profile');
             this.router.navigate(['/home']);
             this.services.currentUser=this.registerationForm.value.email;
           }

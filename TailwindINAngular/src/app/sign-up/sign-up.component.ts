@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { ServicesService } from '../services.service';
 import { FormBuilder } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Inject } from '@angular/core';
 
 import {
@@ -31,6 +32,16 @@ interface TypeList {
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('slideToggleAnimation', [
+      state('void', style({ width: '0', opacity: 0 })),
+      state('*', style({ width: '*', opacity: 1 })),
+      transition(':enter', [
+        style({ width: '0', opacity: 0 }),
+        animate('1000ms ease-out', style({ width: '*', opacity: 1 }))
+      ]),
+    ])
+  ]
 })
 export class SignUpComponent {
 

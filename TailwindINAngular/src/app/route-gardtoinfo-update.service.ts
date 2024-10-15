@@ -6,13 +6,13 @@ import { ActivatedRouteSnapshot, CanActivate, GuardResult, MaybeAsync, Router, R
 })
 export class RouteGardServicetoinfo implements CanActivate {
 
-  cannavitoinfo:boolean=false;
+  cannavitoinfo!:any;
   router:Router = inject(Router);
 
   constructor() { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
-    if (this.cannavitoinfo) {
+    if (!this.cannavitoinfo) {
       return true;
     } else{
       this.router.navigate(['']);

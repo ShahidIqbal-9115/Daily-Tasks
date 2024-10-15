@@ -5,17 +5,15 @@ import { ServicesService } from '../services.service';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import {
-  MatDialog,
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { RouteGardService } from '../route-gard.service';
 import { RouteGardServicetoinfo } from '../route-gardtoinfo-update.service';
-
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatIconModule],
+  imports: [CommonModule, MatTableModule, MatIconModule,RouterModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
   animations: [
@@ -40,29 +38,39 @@ export class HomePageComponent {
   profile: any;
   isVisible: boolean = true;
 
+
   constructor(private router: Router, private services: ServicesService,public dialog: MatDialog, private routeGard:RouteGardService,private routeGardtoinfo:RouteGardServicetoinfo) {
-  console.log(this.routeGard.cannavitohome);
+    // console.log(this.routeGard.cannavitohome);
     this.localstore = this.services.get('tolocal');
     this.dataSource = this.localstore;
-   
+  }
+
+  call(id: any, lable: any) {
+ 
+    if (lable == "Delete") {
+      // this.Delete(id);
+
+    }
+  
   }
 
   ngOnInit()  {
-    // this.routeGard.cannavitohome=false;
+    console.log(this.services.currentUser);
     if (this.services.currentUser!==null) {
       this.localstore.forEach((item: any) => {
         if (item.email == this.services.currentUser) {
-          // this.profile = item;
-          localStorage.setItem('profile', JSON.stringify(item));
-          this.profile=this.services.get('profile');
+          this.profile = item;
           console.log(this.profile);
+          localStorage.setItem('profile', JSON.stringify(this.profile));
+          console.log(this.routeGard.cannavitohome);
+          console.log(this.routeGardtoinfo.cannavitoinfo);
         }
       });
     }
   }
 
   profileUpdate() {
-    this.routeGardtoinfo.cannavitoinfo=true;
+    this.routeGardtoinfo.cannavitoinfo= this.services.get('profile');
     this.router.navigate(['/updateInfo']);
     this.localstore.forEach((item: any) => {
       if (item.email == this.services.currentUser) {
@@ -80,7 +88,20 @@ export class HomePageComponent {
     'email',
     'phone',
     'role',
-  ]
+    // 'actions',
+  ];
+  // actions: any[] = [
+  //   { key: 'view', lable: 'View' },
+  //   { key: 'edit', lable: 'Edit' },
+  //   { key: 'delete', lable: 'Delete' }
+  // ];
+  RouterLink(lable: string,id:any): string {
+    if (lable == "View" || lable == "Edit") {
+      return `/forms/${lable}/${id}`;
+    } else {
+      return '/table';
+    }
+  }
 
   RendertableAdmin() {
     this.dataSource = this.localstore.filter((item: any) => item.role === 'admin' || item.role == 'Admin');
@@ -96,7 +117,7 @@ export class HomePageComponent {
 
   LogOut() {
     // this.profile ='';
-    this.routeGard.cannavitohome=false;
+    this.routeGard.cannavitohome=null;
     this.router.navigate(['']);
   }
 

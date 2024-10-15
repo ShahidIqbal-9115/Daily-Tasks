@@ -1,0 +1,33 @@
+<main class="mainForm " >
+
+    <table mat-table [dataSource]="dataForTable" class="mat-elevation-z8" >
+        @for(c of TableHeading; track $index){
+            @if(c!='actions'){
+            <ng-container matColumnDef={{c}}>
+                <th mat-header-cell *matHeaderCellDef> {{c| uppercase}} </th>
+                <td mat-cell *matCellDef="let element"> {{element[c]}} </td>
+            </ng-container>
+            }
+            
+            @else {
+                <ng-container matColumnDef='actions'>
+                    <th mat-header-cell *matHeaderCellDef class="actionHead"> {{c| uppercase}} </th>
+                    <td mat-cell *matCellDef="let element"> 
+                    @for(a of actions; track $index){
+                        <button  class="margin-btn" mat-raised-button aria-label="Example icon button with a delete icon" (click)="call(element.id,a.lable)" [routerLink]="RouterLink(a.lable,element.id)" >
+                            {{a.lable}}
+                        </button>     
+                    }
+                    </td>
+                </ng-container>
+            }  
+        }
+        <tr mat-header-row *matHeaderRowDef="TableHeading"></tr>
+        <tr mat-row *matRowDef="let row; columns: TableHeading"></tr>
+
+    </table>
+
+    <!-- <button mat-flat-button class="button" (click)="remove()">Delete Record</button> -->
+  
+
+</main>

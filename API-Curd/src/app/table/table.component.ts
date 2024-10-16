@@ -6,7 +6,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { ServiceService } from '../service.service';
 import { MatButtonModule } from '@angular/material/button';
 
-
 @Component({
   selector: 'app-table',
   standalone: true,

@@ -1,0 +1,18 @@
+<div class=" flex mt-4 justify-center">
+    <button (click)="decrement()" class="rounded bg-blue-600 py-2 px-12 font-bold text-white hover:opacity-55">-</button>
+    <span class="rounded mx-6 py-2  px-6 font-bold text-purple-800 text-lg " >{{ counter() }}
+        <br/><small>Counter</small></span>
+    <span class="rounded mx-6 py-2  px-6 font-bold text-purple-800 text-lg" >{{ doubleCounter() }}
+        <br/><small>doubleCounter</small>
+    </span>
+    <button (click)="increment()" class="rounded bg-blue-600  px-12 font-bold text-white hover:opacity-55">+</button>
+</div>
+<p class="text-red-600">{{count}}</p>
+<div class="task-container">
+    <div class="task-item rounded-lg text-white text-lg" *ngFor="let msg of message()">
+        <p> {{ msg }}</p>
+   
+    </div>
+</div>
+
+<!-- <button (click)="oncouunt()">count</button> -->

@@ -8,17 +8,15 @@ import { Observable } from 'rxjs';
 export class ServicesService {
 
   private api='https://jsonplaceholder.typicode.com/posts/1/comments';
-  dataSource:any[]=[];
-  patchId!:number;
-  formtype!:any;
+
   constructor(private http:HttpClient) { }
 
-   getAllData():Observable<any>{
+   getDatapiOne():Observable<any>{
     return this.http.get(this.api)
    }
 
-   
- 
-
+   getDataapiTwo():Observable<any>{
+    return this.http.get(this.api)
+   }
 
 }

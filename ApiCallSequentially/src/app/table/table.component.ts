@@ -24,10 +24,10 @@ export class TableComponent {
 
   ngOnInit() {
 // most recomend 
-    this.ser.getAllData().pipe(
+    this.ser.getDatapiOne().pipe(
       concatMap((api1Data) => {
         this.dataForTable = api1Data;
-        return this.ser.getAllData();  
+        return this.ser.getDataapiTwo();  
       })
     ).subscribe((api2Data: any) => {
       this.dataForTabletow = api2Data;

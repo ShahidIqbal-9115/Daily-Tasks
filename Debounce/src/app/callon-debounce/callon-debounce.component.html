@@ -1,0 +1,19 @@
+<main class="main">
+
+    <form [formGroup]="reForm" class="Form" (ngSubmit)="onSubmit()">
+        <input formControlName="search" />
+        <button type="submit" mat-flat-button>Submit</button>
+        <p>{{reForm.value.search}}</p>
+    </form>
+
+    <div>
+        <div *ngIf="results">
+            <h3>Search Results:</h3>
+            <ul>
+                <li *ngFor="let result of results">
+                    {{ result |json }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>

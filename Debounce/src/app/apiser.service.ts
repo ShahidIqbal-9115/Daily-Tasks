@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiserService {
-  private  api='https://jsonplaceholder.typicode.com/posts/1/comments';
+  private  api='http://192.168.0.86:5000/search?name';
   
   constructor(private http:HttpClient) { }
 
   getinfo(search:any):Observable<any>{
-    return this.http.get(`${this.api}`);
+    return this.http.get(`${this.api}=${search}`);
   }
 }

@@ -38,12 +38,7 @@ export class CallonDebounceComponent {
       .subscribe(results => { 
         this.results=results;
         console.log("Search results:", results);
-        // Handle the search results here
       });
   }
-
-  // onSearch(term: string) {
-  //   this.searchSubject.next(term);
-  // }
 
 }
